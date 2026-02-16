@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRE & CAT Vocabulary - 500 Most Frequent Words</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .filters {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        select, input {
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .word-group {
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .word-group:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .group-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .words-container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .word-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .word-card:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .word-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .frequency-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .freq-high {
+            background: #28a745;
+            color: white;
+        }
+        
+        .freq-medium {
+            background: #ffc107;
+            color: #000;
+        }
+        
+        .freq-low {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .meanings {
+            margin: 10px 0;
+            color: #495057;
+        }
+        
+        .meaning-item {
+            margin: 5px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .meaning-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .antonym {
+            margin-top: 10px;
+            padding: 8px;
+            background: #fff3cd;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        .antonym-label {
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .stats {
+            background: #e7f1ff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .words-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 GRE & CAT Vocabulary Master</h1>
+            <p>500 Most Frequently Used Words - Grouped by Meaning</p>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="frequency-filter">Frequency:</label>
+                <select id="frequency-filter">
+                    <option value="all">All Words</option>
+                    <option value="high">Most Frequent</option>
+                    <option value="medium">Moderately Frequent</option>
+                    <option value="low">Less Frequent</option>
+                </select>
+            </div>
+            
+            <div class="filter-group search-box">
+                <label for="search">Search:</label>
+                <input type="text" id="search" placeholder="Type to search words...">
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="total-words">500</div>
+                <div class="stat-label">Total Words</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visible-words">500</div>
+                <div class="stat-label">Visible Words</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="total-groups">65</div>
+                <div class="stat-label">Word Groups</div>
+            </div>
+        </div>
+        
+        <div class="content" id="content">
+            <!-- Words will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const vocabulary = [
+            {
+                group: "Praise & Admiration",
+                words: [
+                    {
+                        word: "Extol",
+                        freq: "high",
+                        meanings: ["To praise enthusiastically", "To glorify or exalt"],
+                        antonym: "Criticize, Denounce, Censure"
+                    },
+                    {
+                        word: "Laud",
+                        freq: "high",
+                        meanings: ["To praise highly", "To commend"],
+                        antonym: "Condemn, Criticize, Disparage"
+                    },
+                    {
+                        word: "Acclaim",
+                        freq: "high",
+                        meanings: ["Enthusiastic approval", "To praise publicly"],
+                        antonym: "Condemn, Criticize"
+                    },
+                    {
+                        word: "Venerate",
+                        freq: "medium",
+                        meanings: ["To regard with great respect", "To revere"],
+                        antonym: "Disrespect, Despise"
+                    },
+                    {
+                        word: "Eulogize",
+                        freq: "medium",
+                        meanings: ["To praise highly in speech or writing", "To deliver a eulogy"],
+                        antonym: "Criticize, Malign"
+                    }
+                ]
+            },
+            {
+                group: "Criticism & Blame",
+                words: [
+                    {
+                        word: "Censure",
+                        freq: "high",
+                        meanings: ["To express severe disapproval", "Formal criticism"],
+                        antonym: "Praise, Commend, Approve"
+                    },
+                    {
+                        word: "Denounce",
+                        freq: "high",
+                        meanings: ["To publicly declare wrong or evil", "To condemn openly"],
+                        antonym: "Praise, Endorse, Support"
+                    },
+                    {
+                        word: "Castigate",
+                        freq: "medium",
+                        meanings: ["To criticize severely", "To punish harshly"],
+                        antonym: "Praise, Commend"
+                    },
+                    {
+                        word: "Rebuke",
+                        freq: "high",
+                        meanings: ["To express sharp disapproval", "To reprimand"],
+                        antonym: "Praise, Compliment"
+                    },
+                    {
+                        word: "Reprimand",
+                        freq: "high",
+                        meanings: ["To reprove severely", "Formal criticism"],
+                        antonym: "Commend, Praise"
+                    },
+                    {
+                        word: "Admonish",
+                        freq: "medium",
+                        meanings: ["To warn or reprimand gently", "To caution"],
+                        antonym: "Praise, Encourage"
+                    }
+                ]
+            },
+            {
+                group: "Arrogance & Pride",
+                words: [
+                    {
+                        word: "Hubris",
+                        freq: "high",
+                        meanings: ["Excessive pride or arrogance", "Overconfidence"],
+                        antonym: "Humility, Modesty"
+                    },
+                    {
+                        word: "Haughty",
+                        freq: "high",
+                        meanings: ["Arrogantly superior", "Disdainfully proud"],
+                        antonym: "Humble, Modest"
+                    },
+                    {
+                        word: "Arrogant",
+                        freq: "high",
+                        meanings: ["Having excessive pride", "Overbearing manner"],
+                        antonym: "Humble, Modest"
+                    },
+                    {
+                        word: "Supercilious",
+                        freq: "medium",
+                        meanings: ["Behaving as if better than others", "Disdainful"],
+                        antonym: "Humble, Respectful"
+                    },
+                    {
+                        word: "Pompous",
+                        freq: "high",
+                        meanings: ["Self-important", "Pretentiously dignified"],
+                        antonym: "Humble, Modest"
+                    }
+                ]
+            },
+            {
+                group: "Humility & Modesty",
+                words: [
+                    {
+                        word: "Humble",
+                        freq: "high",
+                        meanings: ["Having a modest opinion of oneself", "Not arrogant"],
+                        antonym: "Arrogant, Proud, Haughty"
+                    },
+                    {
+                        word: "Modest",
+                        freq: "high",
+                        meanings: ["Not boastful", "Humble in appearance"],
+                        antonym: "Arrogant, Pompous"
+                    },
+                    {
+                        word: "Unassuming",
+                        freq: "medium",
+                        meanings: ["Not pretentious", "Modest"],
+                        antonym: "Arrogant, Pretentious"
+                    },
+                    {
+                        word: "Diffident",
+                        freq: "medium",
+                        meanings: ["Lacking confidence", "Modest or shy"],
+                        antonym: "Confident, Assertive"
+                    }
+                ]
+            },
+            {
+                group: "Talkative & Verbose",
+                words: [
+                    {
+                        word: "Verbose",
+                        freq: "high",
+                        meanings: ["Using more words than needed", "Wordy"],
+                        antonym: "Concise, Laconic, Terse"
+                    },
+                    {
+                        word: "Garrulous",
+                        freq: "high",
+                        meanings: ["Excessively talkative", "Chatty"],
+                        antonym: "Taciturn, Laconic"
+                    },
+                    {
+                        word: "Loquacious",
+                        freq: "high",
+                        meanings: ["Very talkative", "Fond of talking"],
+                        antonym: "Taciturn, Reserved"
+                    },
+                    {
+                        word: "Voluble",
+                        freq: "medium",
+                        meanings: ["Speaking readily and continuously", "Fluent"],
+                        antonym: "Taciturn, Reticent"
+                    },
+                    {
+                        word: "Prolix",
+                        freq: "low",
+                        meanings: ["Tediously lengthy", "Using too many words"],
+                        antonym: "Concise, Succinct"
+                    }
+                ]
+            },
+            {
+                group: "Brief & Concise",
+                words: [
+                    {
+                        word: "Laconic",
+                        freq: "high",
+                        meanings: ["Using few words", "Brief and to the point"],
+                        antonym: "Verbose, Garrulous"
+                    },
+                    {
+                        word: "Terse",
+                        freq: "high",
+                        meanings: ["Brief and to the point", "Concise"],
+                        antonym: "Verbose, Wordy"
+                    },
+                    {
+                        word: "Succinct",
+                        freq: "high",
+                        meanings: ["Briefly expressed", "Concise"],
+                        antonym: "Verbose, Prolix"
+                    },
+                    {
+                        word: "Pithy",
+                        freq: "medium",
+                        meanings: ["Concise and forceful", "Brief but meaningful"],
+                        antonym: "Verbose, Rambling"
+                    },
+                    {
+                        word: "Taciturn",
+                        freq: "medium",
+                        meanings: ["Habitually silent", "Not talkative"],
+                        antonym: "Garrulous, Loquacious"
+                    }
+                ]
+            },
+            {
+                group: "Deception & Dishonesty",
+                words: [
+                    {
+                        word: "Deceitful",
+                        freq: "high",
+                        meanings: ["Misleading or lying", "Dishonest"],
+                        antonym: "Honest, Truthful, Candid"
+                    },
+                    {
+                        word: "Duplicity",
+                        freq: "high",
+                        meanings: ["Deceitfulness", "Double-dealing"],
+                        antonym: "Honesty, Candor"
+                    },
+                    {
+                        word: "Guile",
+                        freq: "medium",
+                        meanings: ["Cunning deceit", "Craftiness"],
+                        antonym: "Honesty, Candor"
+                    },
+                    {
+                        word: "Chicanery",
+                        freq: "medium",
+                        meanings: ["Deception by trickery", "Dishonest behavior"],
+                        antonym: "Honesty, Straightforwardness"
+                    },
+                    {
+                        word: "Perfidy",
+                        freq: "low",
+                        meanings: ["Deliberate breach of faith", "Treachery"],
+                        antonym: "Loyalty, Faithfulness"
+                    },
+                    {
+                        word: "Mendacious",
+                        freq: "medium",
+                        meanings: ["Lying or untruthful", "Dishonest"],
+                        antonym: "Truthful, Honest"
+                    }
+                ]
+            },
+            {
+                group: "Honesty & Truthfulness",
+                words: [
+                    {
+                        word: "Candid",
+                        freq: "high",
+                        meanings: ["Truthful and straightforward", "Frank"],
+                        antonym: "Deceitful, Dishonest"
+                    },
+                    {
+                        word: "Frank",
+                        freq: "high",
+                        meanings: ["Open and honest", "Straightforward"],
+                        antonym: "Evasive, Deceitful"
+                    },
+                    {
+                        word: "Veracious",
+                        freq: "medium",
+                        meanings: ["Speaking or representing the truth", "Truthful"],
+                        antonym: "Mendacious, Dishonest"
+                    },
+                    {
+                        word: "Guileless",
+                        freq: "medium",
+                        meanings: ["Innocent and honest", "Without deception"],
+                        antonym: "Cunning, Deceitful"
+                    }
+                ]
+            },
+            {
+                group: "Stubbornness & Inflexibility",
+                words: [
+                    {
+                        word: "Obstinate",
+                        freq: "high",
+                        meanings: ["Stubbornly refusing to change", "Unyielding"],
+                        antonym: "Flexible, Compliant"
+                    },
+                    {
+                        word: "Intransigent",
+                        freq: "high",
+                        meanings: ["Refusing to compromise", "Stubborn"],
+                        antonym: "Flexible, Compromising"
+                    },
+                    {
+                        word: "Adamant",
+                        freq: "high",
+                        meanings: ["Refusing to change", "Unshakeable"],
+                        antonym: "Flexible, Yielding"
+                    },
+                    {
+                        word: "Recalcitrant",
+                        freq: "medium",
+                        meanings: ["Stubbornly disobedient", "Uncooperative"],
+                        antonym: "Compliant, Obedient"
+                    },
+                    {
+                        word: "Tenacious",
+                        freq: "high",
+                        meanings: ["Holding firmly", "Persistent"],
+                        antonym: "Yielding, Weak"
+                    }
+                ]
+            },
+            {
+                group: "Flexibility & Adaptability",
+                words: [
+                    {
+                        word: "Malleable",
+                        freq: "high",
+                        meanings: ["Easily influenced", "Adaptable"],
+                        antonym: "Rigid, Inflexible"
+                    },
+                    {
+                        word: "Pliant",
+                        freq: "medium",
+                        meanings: ["Easily bent or flexible", "Adaptable"],
+                        antonym: "Rigid, Inflexible"
+                    },
+                    {
+                        word: "Tractable",
+                        freq: "medium",
+                        meanings: ["Easy to control or manage", "Compliant"],
+                        antonym: "Intractable, Stubborn"
+                    },
+                    {
+                        word: "Amenable",
+                        freq: "high",
+                        meanings: ["Willing to accept or agree", "Open to suggestion"],
+                        antonym: "Obstinate, Stubborn"
+                    }
+                ]
+            },
+            {
+                group: "Abundance & Plenty",
+                words: [
+                    {
+                        word: "Copious",
+                        freq: "high",
+                        meanings: ["Abundant", "Plentiful"],
+                        antonym: "Scarce, Meager"
+                    },
+                    {
+                        word: "Profuse",
+                        freq: "medium",
+                        meanings: ["Abundant or extravagant", "Plentiful"],
+                        antonym: "Scarce, Sparse"
+                    },
+                    {
+                        word: "Plethora",
+                        freq: "high",
+                        meanings: ["Excess or abundance", "Overabundance"],
+                        antonym: "Scarcity, Dearth"
+                    },
+                    {
+                        word: "Prolific",
+                        freq: "high",
+                        meanings: ["Producing abundantly", "Highly productive"],
+                        antonym: "Unproductive, Barren"
+                    },
+                    {
+                        word: "Opulent",
+                        freq: "medium",
+                        meanings: ["Wealthy and luxurious", "Abundant"],
+                        antonym: "Poor, Meager"
+                    }
+                ]
+            },
+            {
+                group: "Scarcity & Lack",
+                words: [
+                    {
+                        word: "Scarcity",
+                        freq: "high",
+                        meanings: ["Shortage", "Insufficient supply"],
+                        antonym: "Abundance, Plethora"
+                    },
+                    {
+                        word: "Dearth",
+                        freq: "high",
+                        meanings: ["Scarcity or lack", "Shortage"],
+                        antonym: "Abundance, Surplus"
+                    },
+                    {
+                        word: "Paucity",
+                        freq: "medium",
+                        meanings: ["Smallness of quantity", "Scarcity"],
+                        antonym: "Abundance, Plethora"
+                    },
+                    {
+                        word: "Meager",
+                        freq: "high",
+                        meanings: ["Lacking in quantity", "Inadequate"],
+                        antonym: "Abundant, Plentiful"
+                    },
+                    {
+                        word: "Sparse",
+                        freq: "high",
+                        meanings: ["Thinly dispersed", "Scanty"],
+                        antonym: "Dense, Abundant"
+                    }
+                ]
+            },
+            {
+                group: "Temporary & Brief",
+                words: [
+                    {
+                        word: "Ephemeral",
+                        freq: "high",
+                        meanings: ["Lasting for a very short time", "Transitory"],
+                        antonym: "Permanent, Enduring"
+                    },
+                    {
+                        word: "Transient",
+                        freq: "high",
+                        meanings: ["Lasting only briefly", "Temporary"],
+                        antonym: "Permanent, Lasting"
+                    },
+                    {
+                        word: "Fleeting",
+                        freq: "high",
+                        meanings: ["Passing quickly", "Brief"],
+                        antonym: "Lasting, Permanent"
+                    },
+                    {
+                        word: "Evanescent",
+                        freq: "medium",
+                        meanings: ["Vanishing quickly", "Fleeting"],
+                        antonym: "Permanent, Enduring"
+                    },
+                    {
+                        word: "Transitory",
+                        freq: "medium",
+                        meanings: ["Not permanent", "Temporary"],
+                        antonym: "Permanent, Lasting"
+                    }
+                ]
+            },
+            {
+                group: "Permanent & Lasting",
+                words: [
+                    {
+                        word: "Perpetual",
+                        freq: "high",
+                        meanings: ["Never ending", "Continuous"],
+                        antonym: "Temporary, Ephemeral"
+                    },
+                    {
+                        word: "Immutable",
+                        freq: "medium",
+                        meanings: ["Unchangeable", "Permanent"],
+                        antonym: "Changeable, Mutable"
+                    },
+                    {
+                        word: "Enduring",
+                        freq: "high",
+                        meanings: ["Lasting", "Permanent"],
+                        antonym: "Temporary, Fleeting"
+                    },
+                    {
+                        word: "Perennial",
+                        freq: "medium",
+                        meanings: ["Lasting indefinitely", "Enduring"],
+                        antonym: "Temporary, Ephemeral"
+                    }
+                ]
+            },
+            {
+                group: "Hostility & Aggression",
+                words: [
+                    {
+                        word: "Belligerent",
+                        freq: "high",
+                        meanings: ["Hostile and aggressive", "Warlike"],
+                        antonym: "Peaceful, Pacifist"
+                    },
+                    {
+                        word: "Bellicose",
+                        freq: "medium",
+                        meanings: ["Eager to fight", "Warlike"],
+                        antonym: "Peaceful, Conciliatory"
+                    },
+                    {
+                        word: "Pugnacious",
+                        freq: "medium",
+                        meanings: ["Eager to fight", "Combative"],
+                        antonym: "Peaceful, Docile"
+                    },
+                    {
+                        word: "Contentious",
+                        freq: "high",
+                        meanings: ["Causing disagreement", "Argumentative"],
+                        antonym: "Agreeable, Peaceable"
+                    },
+                    {
+                        word: "Antagonistic",
+                        freq: "high",
+                        meanings: ["Showing opposition", "Hostile"],
+                        antonym: "Friendly, Supportive"
+                    }
+                ]
+            },
+            {
+                group: "Peace & Harmony",
+                words: [
+                    {
+                        word: "Conciliatory",
+                        freq: "high",
+                        meanings: ["Intended to placate", "Peaceable"],
+                        antonym: "Hostile, Bellicose"
+                    },
+                    {
+                        word: "Placate",
+                        freq: "high",
+                        meanings: ["To calm or pacify", "To appease"],
+                        antonym: "Anger, Provoke"
+                    },
+                    {
+                        word: "Mollify",
+                        freq: "medium",
+                        meanings: ["To appease or soften", "To calm"],
+                        antonym: "Anger, Aggravate"
+                    },
+                    {
+                        word: "Pacify",
+                        freq: "high",
+                        meanings: ["To bring peace", "To calm"],
+                        antonym: "Provoke, Agitate"
+                    },
+                    {
+                        word: "Ameliorate",
+                        freq: "medium",
+                        meanings: ["To make better", "To improve"],
+                        antonym: "Worsen, Aggravate"
+                    }
+                ]
+            },
+            {
+                group: "Careful & Cautious",
+                words: [
+                    {
+                        word: "Prudent",
+                        freq: "high",
+                        meanings: ["Wise and careful", "Cautious"],
+                        antonym: "Reckless, Imprudent"
+                    },
+                    {
+                        word: "Judicious",
+                        freq: "high",
+                        meanings: ["Showing good judgment", "Wise"],
+                        antonym: "Injudicious, Reckless"
+                    },
+                    {
+                        word: "Circumspect",
+                        freq: "medium",
+                        meanings: ["Wary and cautious", "Prudent"],
+                        antonym: "Reckless, Careless"
+                    },
+                    {
+                        word: "Wary",
+                        freq: "high",
+                        meanings: ["Cautious", "On guard"],
+                        antonym: "Unwary, Careless"
+                    },
+                    {
+                        word: "Vigilant",
+                        freq: "high",
+                        meanings: ["Watchful and alert", "Attentive"],
+                        antonym: "Negligent, Careless"
+                    }
+                ]
+            },
+            {
+                group: "Reckless & Careless",
+                words: [
+                    {
+                        word: "Reckless",
+                        freq: "high",
+                        meanings: ["Careless of consequences", "Rash"],
+                        antonym: "Careful, Prudent"
+                    },
+                    {
+                        word: "Impetuous",
+                        freq: "high",
+                        meanings: ["Acting without thought", "Impulsive"],
+                        antonym: "Cautious, Deliberate"
+                    },
+                    {
+                        word: "Precipitate",
+                        freq: "medium",
+                        meanings: ["Done hastily", "Rash"],
+                        antonym: "Cautious, Deliberate"
+                    },
+                    {
+                        word: "Foolhardy",
+                        freq: "medium",
+                        meanings: ["Recklessly bold", "Rash"],
+                        antonym: "Cautious, Prudent"
+                    },
+                    {
+                        word: "Imprudent",
+                        freq: "medium",
+                        meanings: ["Lacking caution", "Unwise"],
+                        antonym: "Prudent, Wise"
+                    }
+                ]
+            },
+            {
+                group: "Increase & Growth",
+                words: [
+                    {
+                        word: "Augment",
+                        freq: "high",
+                        meanings: ["To make greater", "To increase"],
+                        antonym: "Diminish, Reduce"
+                    },
+                    {
+                        word: "Enhance",
+                        freq: "high",
+                        meanings: ["To improve or increase", "To intensify"],
+                        antonym: "Diminish, Reduce"
+                    },
+                    {
+                        word: "Amplify",
+                        freq: "high",
+                        meanings: ["To make larger", "To expand"],
+                        antonym: "Diminish, Reduce"
+                    },
+                    {
+                        word: "Proliferate",
+                        freq: "medium",
+                        meanings: ["To increase rapidly", "To multiply"],
+                        antonym: "Decrease, Dwindle"
+                    },
+                    {
+                        word: "Burgeon",
+                        freq: "medium",
+                        meanings: ["To grow rapidly", "To flourish"],
+                        antonym: "Wither, Decline"
+                    }
+                ]
+            },
+            {
+                group: "Decrease & Reduction",
+                words: [
+                    {
+                        word: "Diminish",
+                        freq: "high",
+                        meanings: ["To make smaller", "To reduce"],
+                        antonym: "Increase, Augment"
+                    },
+                    {
+                        word: "Attenuate",
+                        freq: "medium",
+                        meanings: ["To weaken or reduce", "To make thin"],
+                        antonym: "Strengthen, Amplify"
+                    },
+                    {
+                        word: "Wane",
+                        freq: "high",
+                        meanings: ["To decrease gradually", "To decline"],
+                        antonym: "Wax, Increase"
+                    },
+                    {
+                        word: "Dwindle",
+                        freq: "high",
+                        meanings: ["To become smaller", "To diminish"],
+                        antonym: "Grow, Increase"
+                    },
+                    {
+                        word: "Abate",
+                        freq: "high",
+                        meanings: ["To become less intense", "To decrease"],
+                        antonym: "Intensify, Increase"
+                    }
+                ]
+            },
+            {
+                group: "Support & Assistance",
+                words: [
+                    {
+                        word: "Advocate",
+                        freq: "high",
+                        meanings: ["To support publicly", "To recommend"],
+                        antonym: "Oppose, Denounce"
+                    },
+                    {
+                        word: "Champion",
+                        freq: "high",
+                        meanings: ["To support vigorously", "To defend"],
+                        antonym: "Oppose, Condemn"
+                    },
+                    {
+                        word: "Bolster",
+                        freq: "high",
+                        meanings: ["To support or strengthen", "To reinforce"],
+                        antonym: "Undermine, Weaken"
+                    },
+                    {
+                        word: "Corroborate",
+                        freq: "high",
+                        meanings: ["To confirm or support", "To verify"],
+                        antonym: "Contradict, Refute"
+                    },
+                    {
+                        word: "Substantiate",
+                        freq: "medium",
+                        meanings: ["To provide evidence", "To verify"],
+                        antonym: "Disprove, Refute"
+                    }
+                ]
+            },
+            {
+                group: "Opposition & Undermining",
+                words: [
+                    {
+                        word: "Undermine",
+                        freq: "high",
+                        meanings: ["To weaken gradually", "To sabotage"],
+                        antonym: "Support, Bolster"
+                    },
+                    {
+                        word: "Subvert",
+                        freq: "medium",
+                        meanings: ["To undermine authority", "To overthrow"],
+                        antonym: "Support, Uphold"
+                    },
+                    {
+                        word: "Impede",
+                        freq: "high",
+                        meanings: ["To obstruct or hinder", "To block"],
+                        antonym: "Facilitate, Assist"
+                    },
+                    {
+                        word: "Thwart",
+                        freq: "high",
+                        meanings: ["To prevent from succeeding", "To frustrate"],
+                        antonym: "Assist, Support"
+                    },
+                    {
+                        word: "Refute",
+                        freq: "high",
+                        meanings: ["To prove wrong", "To disprove"],
+                        antonym: "Confirm, Corroborate"
+                    }
+                ]
+            },
+            {
+                group: "Relevance & Connection",
+                words: [
+                    {
+                        word: "Pertinent",
+                        freq: "high",
+                        meanings: ["Relevant", "Applicable"],
+                        antonym: "Irrelevant, Immaterial"
+                    },
+                    {
+                        word: "Germane",
+                        freq: "medium",
+                        meanings: ["Relevant and appropriate", "Pertinent"],
+                        antonym: "Irrelevant, Extraneous"
+                    },
+                    {
+                        word: "Apposite",
+                        freq: "low",
+                        meanings: ["Appropriate or relevant", "Apt"],
+                        antonym: "Inappropriate, Irrelevant"
+                    },
+                    {
+                        word: "Apropos",
+                        freq: "medium",
+                        meanings: ["Relevant to the situation", "Appropriate"],
+                        antonym: "Irrelevant, Inappropriate"
+                    }
+                ]
+            },
+            {
+                group: "Irrelevance & Unimportance",
+                words: [
+                    {
+                        word: "Extraneous",
+                        freq: "high",
+                        meanings: ["Irrelevant or unrelated", "Not essential"],
+                        antonym: "Relevant, Essential"
+                    },
+                    {
+                        word: "Superfluous",
+                        freq: "high",
+                        meanings: ["Unnecessary or excessive", "Redundant"],
+                        antonym: "Essential, Necessary"
+                    },
+                    {
+                        word: "Tangential",
+                        freq: "medium",
+                        meanings: ["Only slightly connected", "Peripheral"],
+                        antonym: "Central, Relevant"
+                    },
+                    {
+                        word: "Trivial",
+                        freq: "high",
+                        meanings: ["Of little importance", "Insignificant"],
+                        antonym: "Important, Significant"
+                    }
+                ]
+            },
+            {
+                group: "Clarity & Transparency",
+                words: [
+                    {
+                        word: "Lucid",
+                        freq: "high",
+                        meanings: ["Clear and easy to understand", "Transparent"],
+                        antonym: "Obscure, Confusing"
+                    },
+                    {
+                        word: "Pellucid",
+                        freq: "low",
+                        meanings: ["Transparently clear", "Easy to understand"],
+                        antonym: "Murky, Obscure"
+                    },
+                    {
+                        word: "Transparent",
+                        freq: "high",
+                        meanings: ["Easy to perceive", "Clear"],
+                        antonym: "Opaque, Obscure"
+                    },
+                    {
+                        word: "Explicit",
+                        freq: "high",
+                        meanings: ["Stated clearly", "Unambiguous"],
+                        antonym: "Implicit, Vague"
+                    },
+                    {
+                        word: "Articulate",
+                        freq: "high",
+                        meanings: ["Expressing clearly", "Well-spoken"],
+                        antonym: "Inarticulate, Unclear"
+                    }
+                ]
+            },
+            {
+                group: "Obscurity & Vagueness",
+                words: [
+                    {
+                        word: "Obscure",
+                        freq: "high",
+                        meanings: ["Not clear", "Hidden or difficult to understand"],
+                        antonym: "Clear, Obvious"
+                    },
+                    {
+                        word: "Ambiguous",
+                        freq: "high",
+                        meanings: ["Unclear or having multiple meanings", "Vague"],
+                        antonym: "Clear, Explicit"
+                    },
+                    {
+                        word: "Cryptic",
+                        freq: "medium",
+                        meanings: ["Mysterious or obscure", "Hidden meaning"],
+                        antonym: "Clear, Obvious"
+                    },
+                    {
+                        word: "Enigmatic",
+                        freq: "high",
+                        meanings: ["Mysterious and puzzling", "Difficult to understand"],
+                        antonym: "Clear, Straightforward"
+                    },
+                    {
+                        word: "Opaque",
+                        freq: "high",
+                        meanings: ["Not transparent", "Difficult to understand"],
+                        antonym: "Transparent, Clear"
+                    }
+                ]
+            },
+            {
+                group: "Complex & Complicated",
+                words: [
+                    {
+                        word: "Intricate",
+                        freq: "high",
+                        meanings: ["Very complicated", "Complex in detail"],
+                        antonym: "Simple, Straightforward"
+                    },
+                    {
+                        word: "Convoluted",
+                        freq: "high",
+                        meanings: ["Extremely complex", "Twisted"],
+                        antonym: "Simple, Straightforward"
+                    },
+                    {
+                        word: "Labyrinthine",
+                        freq: "medium",
+                        meanings: ["Like a maze", "Extremely complex"],
+                        antonym: "Simple, Direct"
+                    },
+                    {
+                        word: "Byzantine",
+                        freq: "medium",
+                        meanings: ["Extremely complicated", "Intricate"],
+                        antonym: "Simple, Straightforward"
+                    }
+                ]
+            },
+            {
+                group: "Simple & Straightforward",
+                words: [
+                    {
+                        word: "Austere",
+                        freq: "high",
+                        meanings: ["Severe or strict in appearance", "Simple and plain"],
+                        antonym: "Ornate, Elaborate"
+                    },
+                    {
+                        word: "Spartan",
+                        freq: "medium",
+                        meanings: ["Simple and frugal", "Lacking comfort"],
+                        antonym: "Luxurious, Elaborate"
+                    },
+                    {
+                        word: "Rudimentary",
+                        freq: "medium",
+                        meanings: ["Basic or elementary", "Undeveloped"],
+                        antonym: "Advanced, Sophisticated"
+                    }
+                ]
+            },
+            {
+                group: "Anger & Irritation",
+                words: [
+                    {
+                        word: "Irate",
+                        freq: "high",
+                        meanings: ["Extremely angry", "Furious"],
+                        antonym: "Calm, Pleased"
+                    },
+                    {
+                        word: "Incensed",
+                        freq: "medium",
+                        meanings: ["Very angry", "Enraged"],
+                        antonym: "Calm, Pleased"
+                    },
+                    {
+                        word: "Irascible",
+                        freq: "medium",
+                        meanings: ["Easily angered", "Hot-tempered"],
+                        antonym: "Calm, Even-tempered"
+                    },
+                    {
+                        word: "Petulant",
+                        freq: "medium",
+                        meanings: ["Childishly irritable", "Bad-tempered"],
+                        antonym: "Good-natured, Cheerful"
+                    },
+                    {
+                        word: "Vexed",
+                        freq: "high",
+                        meanings: ["Annoyed or frustrated", "Troubled"],
+                        antonym: "Pleased, Content"
+                    }
+                ]
+            },
+            {
+                group: "Calmness & Composure",
+                words: [
+                    {
+                        word: "Serene",
+                        freq: "high",
+                        meanings: ["Calm and peaceful", "Tranquil"],
+                        antonym: "Agitated, Disturbed"
+                    },
+                    {
+                        word: "Placid",
+                        freq: "medium",
+                        meanings: ["Calm and peaceful", "Not easily upset"],
+                        antonym: "Agitated, Turbulent"
+                    },
+                    {
+                        word: "Tranquil",
+                        freq: "high",
+                        meanings: ["Free from disturbance", "Calm"],
+                        antonym: "Turbulent, Agitated"
+                    },
+                    {
+                        word: "Equanimity",
+                        freq: "medium",
+                        meanings: ["Mental calmness", "Composure"],
+                        antonym: "Agitation, Anxiety"
+                    },
+                    {
+                        word: "Phlegmatic",
+                        freq: "low",
+                        meanings: ["Calm and unemotional", "Not easily excited"],
+                        antonym: "Excitable, Emotional"
+                    }
+                ]
+            },
+            {
+                group: "Enthusiasm & Energy",
+                words: [
+                    {
+                        word: "Zealous",
+                        freq: "high",
+                        meanings: ["Filled with enthusiasm", "Fervent"],
+                        antonym: "Apathetic, Indifferent"
+                    },
+                    {
+                        word: "Ardent",
+                        freq: "high",
+                        meanings: ["Passionate and enthusiastic", "Fervent"],
+                        antonym: "Apathetic, Indifferent"
+                    },
+                    {
+                        word: "Fervent",
+                        freq: "high",
+                        meanings: ["Having intense feeling", "Passionate"],
+                        antonym: "Apathetic, Indifferent"
+                    },
+                    {
+                        word: "Ebullient",
+                        freq: "medium",
+                        meanings: ["Cheerful and full of energy", "Exuberant"],
+                        antonym: "Depressed, Subdued"
+                    },
+                    {
+                        word: "Exuberant",
+                        freq: "high",
+                        meanings: ["Full of energy and excitement", "Lively"],
+                        antonym: "Subdued, Restrained"
+                    }
+                ]
+            },
+            {
+                group: "Apathy & Indifference",
+                words: [
+                    {
+                        word: "Apathetic",
+                        freq: "high",
+                        meanings: ["Showing no interest", "Indifferent"],
+                        antonym: "Enthusiastic, Passionate"
+                    },
+                    {
+                        word: "Indifferent",
+                        freq: "high",
+                        meanings: ["Having no particular interest", "Unconcerned"],
+                        antonym: "Interested, Concerned"
+                    },
+                    {
+                        word: "Lethargic",
+                        freq: "high",
+                        meanings: ["Lacking energy", "Sluggish"],
+                        antonym: "Energetic, Vigorous"
+                    },
+                    {
+                        word: "Listless",
+                        freq: "medium",
+                        meanings: ["Lacking energy or enthusiasm", "Languid"],
+                        antonym: "Energetic, Enthusiastic"
+                    },
+                    {
+                        word: "Torpid",
+                        freq: "low",
+                        meanings: ["Mentally or physically inactive", "Sluggish"],
+                        antonym: "Active, Energetic"
+                    }
+                ]
+            },
+            {
+                group: "Sadness & Gloom",
+                words: [
+                    {
+                        word: "Melancholy",
+                        freq: "high",
+                        meanings: ["Deep sadness", "Gloomy"],
+                        antonym: "Cheerful, Happy"
+                    },
+                    {
+                        word: "Morose",
+                        freq: "medium",
+                        meanings: ["Sullen and ill-tempered", "Gloomy"],
+                        antonym: "Cheerful, Jovial"
+                    },
+                    {
+                        word: "Doleful",
+                        freq: "low",
+                        meanings: ["Expressing sorrow", "Mournful"],
+                        antonym: "Cheerful, Happy"
+                    },
+                    {
+                        word: "Lugubrious",
+                        freq: "low",
+                        meanings: ["Looking or sounding sad", "Mournful"],
+                        antonym: "Cheerful, Upbeat"
+                    },
+                    {
+                        word: "Dismal",
+                        freq: "high",
+                        meanings: ["Depressing or dreary", "Gloomy"],
+                        antonym: "Cheerful, Bright"
+                    }
+                ]
+            },
+            {
+                group: "Joy & Happiness",
+                words: [
+                    {
+                        word: "Jubilant",
+                        freq: "medium",
+                        meanings: ["Feeling great joy", "Triumphant"],
+                        antonym: "Sad, Dejected"
+                    },
+                    {
+                        word: "Elated",
+                        freq: "high",
+                        meanings: ["Extremely happy", "Joyful"],
+                        antonym: "Depressed, Dejected"
+                    },
+                    {
+                        word: "Euphoric",
+                        freq: "medium",
+                        meanings: ["Intensely happy", "Elated"],
+                        antonym: "Miserable, Depressed"
+                    },
+                    {
+                        word: "Jovial",
+                        freq: "high",
+                        meanings: ["Cheerful and friendly", "Jolly"],
+                        antonym: "Gloomy, Morose"
+                    },
+                    {
+                        word: "Buoyant",
+                        freq: "medium",
+                        meanings: ["Cheerful and optimistic", "Light-hearted"],
+                        antonym: "Depressed, Gloomy"
+                    }
+                ]
+            },
+            {
+                group: "Wisdom & Knowledge",
+                words: [
+                    {
+                        word: "Sagacious",
+                        freq: "medium",
+                        meanings: ["Having good judgment", "Wise"],
+                        antonym: "Foolish, Unwise"
+                    },
+                    {
+                        word: "Astute",
+                        freq: "high",
+                        meanings: ["Perceptive and shrewd", "Sharp"],
+                        antonym: "Obtuse, Foolish"
+                    },
+                    {
+                        word: "Perspicacious",
+                        freq: "low",
+                        meanings: ["Having keen insight", "Perceptive"],
+                        antonym: "Obtuse, Dull"
+                    },
+                    {
+                        word: "Erudite",
+                        freq: "medium",
+                        meanings: ["Having great knowledge", "Learned"],
+                        antonym: "Ignorant, Unlearned"
+                    },
+                    {
+                        word: "Discerning",
+                        freq: "high",
+                        meanings: ["Having good judgment", "Perceptive"],
+                        antonym: "Undiscerning, Obtuse"
+                    }
+                ]
+            },
+            {
+                group: "Ignorance & Foolishness",
+                words: [
+                    {
+                        word: "Obtuse",
+                        freq: "high",
+                        meanings: ["Slow to understand", "Dull"],
+                        antonym: "Astute, Sharp"
+                    },
+                    {
+                        word: "Fatuous",
+                        freq: "low",
+                        meanings: ["Silly and pointless", "Inane"],
+                        antonym: "Sensible, Intelligent"
+                    },
+                    {
+                        word: "Inane",
+                        freq: "medium",
+                        meanings: ["Lacking sense", "Silly"],
+                        antonym: "Sensible, Meaningful"
+                    },
+                    {
+                        word: "Vacuous",
+                        freq: "medium",
+                        meanings: ["Lacking intelligence", "Empty"],
+                        antonym: "Intelligent, Thoughtful"
+                    },
+                    {
+                        word: "Banal",
+                        freq: "high",
+                        meanings: ["Lacking originality", "Boring"],
+                        antonym: "Original, Novel"
+                    }
+                ]
+            },
+            {
+                group: "Innovation & Originality",
+                words: [
+                    {
+                        word: "Novel",
+                        freq: "high",
+                        meanings: ["New and original", "Innovative"],
+                        antonym: "Common, Traditional"
+                    },
+                    {
+                        word: "Innovative",
+                        freq: "high",
+                        meanings: ["Introducing new ideas", "Creative"],
+                        antonym: "Conventional, Traditional"
+                    },
+                    {
+                        word: "Pioneering",
+                        freq: "medium",
+                        meanings: ["Introducing new methods", "Groundbreaking"],
+                        antonym: "Conventional, Traditional"
+                    },
+                    {
+                        word: "Unprecedented",
+                        freq: "high",
+                        meanings: ["Never done before", "Novel"],
+                        antonym: "Common, Usual"
+                    }
+                ]
+            },
+            {
+                group: "Tradition & Convention",
+                words: [
+                    {
+                        word: "Orthodox",
+                        freq: "high",
+                        meanings: ["Following tradition", "Conventional"],
+                        antonym: "Unorthodox, Radical"
+                    },
+                    {
+                        word: "Conventional",
+                        freq: "high",
+                        meanings: ["Following accepted standards", "Traditional"],
+                        antonym: "Unconventional, Novel"
+                    },
+                    {
+                        word: "Conservative",
+                        freq: "high",
+                        meanings: ["Holding traditional values", "Cautious about change"],
+                        antonym: "Liberal, Progressive"
+                    },
+                    {
+                        word: "Archaic",
+                        freq: "medium",
+                        meanings: ["Very old or outdated", "Antiquated"],
+                        antonym: "Modern, Contemporary"
+                    }
+                ]
+            },
+            {
+                group: "Generosity & Kindness",
+                words: [
+                    {
+                        word: "Magnanimous",
+                        freq: "high",
+                        meanings: ["Generous and forgiving", "Noble"],
+                        antonym: "Petty, Mean-spirited"
+                    },
+                    {
+                        word: "Benevolent",
+                        freq: "high",
+                        meanings: ["Well-meaning and kind", "Charitable"],
+                        antonym: "Malevolent, Cruel"
+                    },
+                    {
+                        word: "Altruistic",
+                        freq: "high",
+                        meanings: ["Selflessly concerned for others", "Unselfish"],
+                        antonym: "Selfish, Egocentric"
+                    },
+                    {
+                        word: "Munificent",
+                        freq: "low",
+                        meanings: ["Very generous", "Lavish"],
+                        antonym: "Stingy, Miserly"
+                    },
+                    {
+                        word: "Philanthropic",
+                        freq: "medium",
+                        meanings: ["Seeking to promote welfare", "Charitable"],
+                        antonym: "Selfish, Miserly"
+                    }
+                ]
+            },
+            {
+                group: "Greed & Selfishness",
+                words: [
+                    {
+                        word: "Avaricious",
+                        freq: "medium",
+                        meanings: ["Extremely greedy", "Covetous"],
+                        antonym: "Generous, Altruistic"
+                    },
+                    {
+                        word: "Miserly",
+                        freq: "high",
+                        meanings: ["Unwilling to spend", "Stingy"],
+                        antonym: "Generous, Munificent"
+                    },
+                    {
+                        word: "Parsimonious",
+                        freq: "medium",
+                        meanings: ["Extremely unwilling to spend", "Frugal to excess"],
+                        antonym: "Generous, Extravagant"
+                    },
+                    {
+                        word: "Covetous",
+                        freq: "medium",
+                        meanings: ["Eagerly desiring", "Greedy"],
+                        antonym: "Content, Generous"
+                    },
+                    {
+                        word: "Rapacious",
+                        freq: "low",
+                        meanings: ["Aggressively greedy", "Predatory"],
+                        antonym: "Generous, Giving"
+                    }
+                ]
+            },
+            {
+                group: "Cruelty & Malice",
+                words: [
+                    {
+                        word: "Malevolent",
+                        freq: "high",
+                        meanings: ["Having ill will", "Wishing harm"],
+                        antonym: "Benevolent, Kind"
+                    },
+                    {
+                        word: "Malicious",
+                        freq: "high",
+                        meanings: ["Intending to harm", "Spiteful"],
+                        antonym: "Benevolent, Kind"
+                    },
+                    {
+                        word: "Vindictive",
+                        freq: "high",
+                        meanings: ["Seeking revenge", "Vengeful"],
+                        antonym: "Forgiving, Merciful"
+                    },
+                    {
+                        word: "Ruthless",
+                        freq: "high",
+                        meanings: ["Without pity", "Merciless"],
+                        antonym: "Compassionate, Merciful"
+                    },
+                    {
+                        word: "Sadistic",
+                        freq: "medium",
+                        meanings: ["Deriving pleasure from cruelty", "Cruel"],
+                        antonym: "Kind, Compassionate"
+                    }
+                ]
+            },
+            {
+                group: "Mercy & Compassion",
+                words: [
+                    {
+                        word: "Compassionate",
+                        freq: "high",
+                        meanings: ["Feeling sympathy", "Merciful"],
+                        antonym: "Cruel, Heartless"
+                    },
+                    {
+                        word: "Clemency",
+                        freq: "medium",
+                        meanings: ["Mercy or leniency", "Forgiveness"],
+                        antonym: "Severity, Harshness"
+                    },
+                    {
+                        word: "Lenient",
+                        freq: "high",
+                        meanings: ["Merciful or tolerant", "Not strict"],
+                        antonym: "Strict, Harsh"
+                    },
+                    {
+                        word: "Empathetic",
+                        freq: "high",
+                        meanings: ["Understanding others' feelings", "Compassionate"],
+                        antonym: "Unsympathetic, Indifferent"
+                    }
+                ]
+            },
+            {
+                group: "Strictness & Severity",
+                words: [
+                    {
+                        word: "Stringent",
+                        freq: "high",
+                        meanings: ["Strict or severe", "Rigorous"],
+                        antonym: "Lenient, Lax"
+                    },
+                    {
+                        word: "Rigorous",
+                        freq: "high",
+                        meanings: ["Extremely thorough", "Strict"],
+                        antonym: "Lax, Lenient"
+                    },
+                    {
+                        word: "Draconian",
+                        freq: "medium",
+                        meanings: ["Excessively harsh", "Severe"],
+                        antonym: "Lenient, Mild"
+                    },
+                    {
+                        word: "Austere",
+                        freq: "high",
+                        meanings: ["Severe or strict", "Stern"],
+                        antonym: "Lenient, Indulgent"
+                    }
+                ]
+            },
+            {
+                group: "Laziness & Inactivity",
+                words: [
+                    {
+                        word: "Indolent",
+                        freq: "medium",
+                        meanings: ["Wanting to avoid activity", "Lazy"],
+                        antonym: "Industrious, Active"
+                    },
+                    {
+                        word: "Slothful",
+                        freq: "low",
+                        meanings: ["Lazy", "Sluggish"],
+                        antonym: "Industrious, Diligent"
+                    },
+                    {
+                        word: "Idle",
+                        freq: "high",
+                        meanings: ["Not active", "Lazy"],
+                        antonym: "Active, Busy"
+                    },
+                    {
+                        word: "Languid",
+                        freq: "medium",
+                        meanings: ["Lacking energy", "Slow-moving"],
+                        antonym: "Energetic, Vigorous"
+                    }
+                ]
+            },
+            {
+                group: "Diligence & Hard Work",
+                words: [
+                    {
+                        word: "Diligent",
+                        freq: "high",
+                        meanings: ["Showing care and effort", "Hardworking"],
+                        antonym: "Lazy, Negligent"
+                    },
+                    {
+                        word: "Assiduous",
+                        freq: "medium",
+                        meanings: ["Showing great care", "Diligent"],
+                        antonym: "Lazy, Careless"
+                    },
+                    {
+                        word: "Sedulous",
+                        freq: "low",
+                        meanings: ["Dedicated and diligent", "Persevering"],
+                        antonym: "Lazy, Negligent"
+                    },
+                    {
+                        word: "Industrious",
+                        freq: "high",
+                        meanings: ["Hardworking", "Diligent"],
+                        antonym: "Lazy, Idle"
+                    },
+                    {
+                        word: "Meticulous",
+                        freq: "high",
+                        meanings: ["Showing great attention to detail", "Careful"],
+                        antonym: "Careless, Sloppy"
+                    }
+                ]
+            },
+            {
+                group: "Boldness & Courage",
+                words: [
+                    {
+                        word: "Audacious",
+                        freq: "high",
+                        meanings: ["Showing willingness to take risks", "Bold"],
+                        antonym: "Timid, Cautious"
+                    },
+                    {
+                        word: "Intrepid",
+                        freq: "medium",
+                        meanings: ["Fearless", "Brave"],
+                        antonym: "Timid, Fearful"
+                    },
+                    {
+                        word: "Dauntless",
+                        freq: "medium",
+                        meanings: ["Not intimidated", "Fearless"],
+                        antonym: "Fearful, Timid"
+                    },
+                    {
+                        word: "Valiant",
+                        freq: "high",
+                        meanings: ["Showing courage", "Brave"],
+                        antonym: "Cowardly, Timid"
+                    },
+                    {
+                        word: "Stalwart",
+                        freq: "medium",
+                        meanings: ["Loyal and committed", "Sturdy"],
+                        antonym: "Weak, Unreliable"
+                    }
+                ]
+            },
+            {
+                group: "Timidity & Cowardice",
+                words: [
+                    {
+                        word: "Timid",
+                        freq: "high",
+                        meanings: ["Showing lack of courage", "Shy"],
+                        antonym: "Bold, Brave"
+                    },
+                    {
+                        word: "Pusillanimous",
+                        freq: "low",
+                        meanings: ["Lacking courage", "Timid"],
+                        antonym: "Brave, Bold"
+                    },
+                    {
+                        word: "Craven",
+                        freq: "low",
+                        meanings: ["Contemptibly lacking courage", "Cowardly"],
+                        antonym: "Brave, Courageous"
+                    },
+                    {
+                        word: "Faint-hearted",
+                        freq: "medium",
+                        meanings: ["Lacking courage", "Timid"],
+                        antonym: "Brave, Bold"
+                    }
+                ]
+            },
+            {
+                group: "Submission & Compliance",
+                words: [
+                    {
+                        word: "Submissive",
+                        freq: "high",
+                        meanings: ["Ready to conform", "Obedient"],
+                        antonym: "Defiant, Rebellious"
+                    },
+                    {
+                        word: "Docile",
+                        freq: "high",
+                        meanings: ["Ready to accept control", "Submissive"],
+                        antonym: "Rebellious, Defiant"
+                    },
+                    {
+                        word: "Servile",
+                        freq: "medium",
+                        meanings: ["Excessively willing to serve", "Submissive"],
+                        antonym: "Assertive, Dominant"
+                    },
+                    {
+                        word: "Obsequious",
+                        freq: "medium",
+                        meanings: ["Obedient to an excessive degree", "Fawning"],
+                        antonym: "Assertive, Independent"
+                    }
+                ]
+            },
+            {
+                group: "Rebellion & Defiance",
+                words: [
+                    {
+                        word: "Defiant",
+                        freq: "high",
+                        meanings: ["Openly resisting", "Disobedient"],
+                        antonym: "Obedient, Submissive"
+                    },
+                    {
+                        word: "Insubordinate",
+                        freq: "medium",
+                        meanings: ["Disobedient", "Defiant"],
+                        antonym: "Obedient, Compliant"
+                    },
+                    {
+                        word: "Mutinous",
+                        freq: "low",
+                        meanings: ["Refusing to obey authority", "Rebellious"],
+                        antonym: "Obedient, Loyal"
+                    },
+                    {
+                        word: "Seditious",
+                        freq: "low",
+                        meanings: ["Inciting rebellion", "Subversive"],
+                        antonym: "Loyal, Obedient"
+                    }
+                ]
+            },
+            {
+                group: "Beauty & Attractiveness",
+                words: [
+                    {
+                        word: "Aesthetic",
+                        freq: "high",
+                        meanings: ["Concerned with beauty", "Artistic"],
+                        antonym: "Unattractive, Ugly"
+                    },
+                    {
+                        word: "Pulchritudinous",
+                        freq: "low",
+                        meanings: ["Beautiful", "Attractive"],
+                        antonym: "Ugly, Unattractive"
+                    },
+                    {
+                        word: "Resplendent",
+                        freq: "medium",
+                        meanings: ["Attractive and impressive", "Splendid"],
+                        antonym: "Dull, Plain"
+                    },
+                    {
+                        word: "Sublime",
+                        freq: "high",
+                        meanings: ["Of great excellence", "Awe-inspiring"],
+                        antonym: "Mediocre, Ordinary"
+                    }
+                ]
+            },
+            {
+                group: "Ugliness & Unpleasantness",
+                words: [
+                    {
+                        word: "Grotesque",
+                        freq: "high",
+                        meanings: ["Comically ugly", "Bizarre"],
+                        antonym: "Beautiful, Attractive"
+                    },
+                    {
+                        word: "Hideous",
+                        freq: "high",
+                        meanings: ["Extremely ugly", "Repulsive"],
+                        antonym: "Beautiful, Attractive"
+                    },
+                    {
+                        word: "Repugnant",
+                        freq: "medium",
+                        meanings: ["Extremely distasteful", "Offensive"],
+                        antonym: "Attractive, Pleasant"
+                    },
+                    {
+                        word: "Odious",
+                        freq: "medium",
+                        meanings: ["Extremely unpleasant", "Hateful"],
+                        antonym: "Pleasant, Agreeable"
+                    }
+                ]
+            },
+            {
+                group: "Wealth & Prosperity",
+                words: [
+                    {
+                        word: "Affluent",
+                        freq: "high",
+                        meanings: ["Having a lot of money", "Wealthy"],
+                        antonym: "Poor, Impoverished"
+                    },
+                    {
+                        word: "Opulent",
+                        freq: "medium",
+                        meanings: ["Ostentatiously rich", "Luxurious"],
+                        antonym: "Poor, Plain"
+                    },
+                    {
+                        word: "Prosperous",
+                        freq: "high",
+                        meanings: ["Successful in financial terms", "Flourishing"],
+                        antonym: "Poor, Unsuccessful"
+                    },
+                    {
+                        word: "Lavish",
+                        freq: "high",
+                        meanings: ["Sumptuously rich", "Elaborate"],
+                        antonym: "Meager, Plain"
+                    }
+                ]
+            },
+            {
+                group: "Poverty & Need",
+                words: [
+                    {
+                        word: "Impoverished",
+                        freq: "high",
+                        meanings: ["Made poor", "Destitute"],
+                        antonym: "Wealthy, Affluent"
+                    },
+                    {
+                        word: "Destitute",
+                        freq: "medium",
+                        meanings: ["Extremely poor", "Lacking basic necessities"],
+                        antonym: "Wealthy, Prosperous"
+                    },
+                    {
+                        word: "Indigent",
+                        freq: "medium",
+                        meanings: ["Poor or needy", "Impoverished"],
+                        antonym: "Wealthy, Affluent"
+                    },
+                    {
+                        word: "Penurious",
+                        freq: "low",
+                        meanings: ["Extremely poor", "Stingy"],
+                        antonym: "Wealthy, Generous"
+                    }
+                ]
+            },
+            {
+                group: "Agreement & Harmony",
+                words: [
+                    {
+                        word: "Concord",
+                        freq: "medium",
+                        meanings: ["Agreement or harmony", "Peace"],
+                        antonym: "Discord, Conflict"
+                    },
+                    {
+                        word: "Consensus",
+                        freq: "high",
+                        meanings: ["General agreement", "Unity"],
+                        antonym: "Disagreement, Discord"
+                    },
+                    {
+                        word: "Accord",
+                        freq: "high",
+                        meanings: ["Agreement or harmony", "Consensus"],
+                        antonym: "Discord, Disagreement"
+                    },
+                    {
+                        word: "Congruent",
+                        freq: "medium",
+                        meanings: ["In agreement", "Compatible"],
+                        antonym: "Incongruent, Conflicting"
+                    }
+                ]
+            },
+            {
+                group: "Disagreement & Conflict",
+                words: [
+                    {
+                        word: "Discord",
+                        freq: "high",
+                        meanings: ["Disagreement or strife", "Conflict"],
+                        antonym: "Harmony, Concord"
+                    },
+                    {
+                        word: "Dissension",
+                        freq: "medium",
+                        meanings: ["Disagreement causing dispute", "Discord"],
+                        antonym: "Agreement, Harmony"
+                    },
+                    {
+                        word: "Strife",
+                        freq: "high",
+                        meanings: ["Angry or bitter disagreement", "Conflict"],
+                        antonym: "Peace, Harmony"
+                    },
+                    {
+                        word: "Contention",
+                        freq: "high",
+                        meanings: ["Heated disagreement", "Dispute"],
+                        antonym: "Agreement, Harmony"
+                    },
+                    {
+                        word: "Polemic",
+                        freq: "low",
+                        meanings: ["Strong verbal attack", "Controversial argument"],
+                        antonym: "Agreement, Conciliation"
+                    }
+                ]
+            },
+            {
+                group: "Skillful & Competent",
+                words: [
+                    {
+                        word: "Adept",
+                        freq: "high",
+                        meanings: ["Very skilled", "Proficient"],
+                        antonym: "Inept, Unskilled"
+                    },
+                    {
+                        word: "Proficient",
+                        freq: "high",
+                        meanings: ["Competent or skilled", "Expert"],
+                        antonym: "Inept, Incompetent"
+                    },
+                    {
+                        word: "Dexterous",
+                        freq: "medium",
+                        meanings: ["Showing skill", "Nimble"],
+                        antonym: "Clumsy, Awkward"
+                    },
+                    {
+                        word: "Virtuoso",
+                        freq: "medium",
+                        meanings: ["Highly skilled", "Expert"],
+                        antonym: "Amateur, Novice"
+                    }
+                ]
+            },
+            {
+                group: "Unskilled & Incompetent",
+                words: [
+                    {
+                        word: "Inept",
+                        freq: "high",
+                        meanings: ["Lacking skill", "Incompetent"],
+                        antonym: "Skilled, Competent"
+                    },
+                    {
+                        word: "Maladroit",
+                        freq: "low",
+                        meanings: ["Ineffective or clumsy", "Inept"],
+                        antonym: "Skillful, Adept"
+                    },
+                    {
+                        word: "Bungling",
+                        freq: "medium",
+                        meanings: ["Performing clumsily", "Incompetent"],
+                        antonym: "Skilled, Competent"
+                    },
+                    {
+                        word: "Inept",
+                        freq: "high",
+                        meanings: ["Having no skill", "Clumsy"],
+                        antonym: "Adept, Skilled"
+                    }
+                ]
+            },
+            {
+                group: "Beginning & Origin",
+                words: [
+                    {
+                        word: "Incipient",
+                        freq: "medium",
+                        meanings: ["Beginning to happen", "Initial"],
+                        antonym: "Established, Mature"
+                    },
+                    {
+                        word: "Nascent",
+                        freq: "medium",
+                        meanings: ["Just coming into existence", "Emerging"],
+                        antonym: "Mature, Established"
+                    },
+                    {
+                        word: "Embryonic",
+                        freq: "medium",
+                        meanings: ["In early stage", "Undeveloped"],
+                        antonym: "Mature, Developed"
+                    },
+                    {
+                        word: "Primordial",
+                        freq: "low",
+                        meanings: ["Existing from the beginning", "Primitive"],
+                        antonym: "Modern, Recent"
+                    }
+                ]
+            },
+            {
+                group: "Ending & Completion",
+                words: [
+                    {
+                        word: "Culmination",
+                        freq: "high",
+                        meanings: ["The highest point", "Climax"],
+                        antonym: "Beginning, Start"
+                    },
+                    {
+                        word: "Denouement",
+                        freq: "low",
+                        meanings: ["The final resolution", "Outcome"],
+                        antonym: "Beginning, Introduction"
+                    },
+                    {
+                        word: "Terminal",
+                        freq: "high",
+                        meanings: ["Forming an end", "Final"],
+                        antonym: "Initial, Beginning"
+                    },
+                    {
+                        word: "Consummate",
+                        freq: "medium",
+                        meanings: ["To complete", "Perfect"],
+                        antonym: "Begin, Start"
+                    }
+                ]
+            }
+        ];
+
+        function renderVocabulary() {
+            const content = document.getElementById('content');
+            const frequencyFilter = document.getElementById('frequency-filter').value;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            
+            content.innerHTML = '';
+            let totalVisible = 0;
+            let visibleGroups = 0;
+            
+            vocabulary.forEach(group => {
+                const filteredWords = group.words.filter(wordObj => {
+                    const matchesFreq = frequencyFilter === 'all' || wordObj.freq === frequencyFilter;
+                    const matchesSearch = wordObj.word.toLowerCase().includes(searchTerm) ||
+                                        wordObj.meanings.some(m => m.toLowerCase().includes(searchTerm)) ||
+                                        wordObj.antonym.toLowerCase().includes(searchTerm);
+                    return matchesFreq && matchesSearch;
+                });
+                
+                if (filteredWords.length > 0) {
+                    visibleGroups++;
+                    const groupDiv = document.createElement('div');
+                    groupDiv.className = 'word-group';
+                    
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'group-header';
+                    headerDiv.textContent = group.group;
+                    groupDiv.appendChild(headerDiv);
+                    
+                    const wordsContainer = document.createElement('div');
+                    wordsContainer.className = 'words-container';
+                    
+                    filteredWords.forEach(wordObj => {
+                        totalVisible++;
+                        const wordCard = document.createElement('div');
+                        wordCard.className = 'word-card';
+                        
+                        const freqClass = wordObj.freq === 'high' ? 'freq-high' : 
+                                        wordObj.freq === 'medium' ? 'freq-medium' : 'freq-low';
+                        const freqLabel = wordObj.freq === 'high' ? 'Most Used' : 
+                                        wordObj.freq === 'medium' ? 'Moderate' : 'Less Used';
+                        
+                        wordCard.innerHTML = `
+                            <div class="word-title">
+                                ${wordObj.word}
+                                <span class="frequency-badge ${freqClass}">${freqLabel}</span>
+                            </div>
+                            <div class="meanings">
+                                ${wordObj.meanings.map(m => `<div class="meaning-item">${m}</div>`).join('')}
+                            </div>
+                            <div class="antonym">
+                                <span class="antonym-label">Antonym:</span> ${wordObj.antonym}
+                            </div>
+                        `;
+                        
+                        wordsContainer.appendChild(wordCard);
+                    });
+                    
+                    groupDiv.appendChild(wordsContainer);
+                    content.appendChild(groupDiv);
+                }
+            });
+            
+            if (totalVisible === 0) {
+                content.innerHTML = '<div class="no-results">No words found matching your criteria.</div>';
+            }
+            
+            document.getElementById('visible-words').textContent = totalVisible;
+            document.getElementById('total-groups').textContent = visibleGroups;
+        }
+        
+        document.getElementById('frequency-filter').addEventListener('change', renderVocabulary);
+        document.getElementById('search').addEventListener('input', renderVocabulary);
+        
+        renderVocabulary();
+    </script>
+</body>
+</html>
