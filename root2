@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRE & CAT Root Words, Prefixes & Suffixes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #f5576c;
+            border-bottom: 3px solid #f5576c;
+            margin-bottom: -3px;
+        }
+        
+        .filters {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        input {
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #f5576c;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .root-card {
+            margin-bottom: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .root-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .root-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .root-main {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .root-origin {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .root-meaning {
+            font-size: 1.1em;
+            margin-top: 5px;
+            opacity: 0.95;
+        }
+        
+        .root-body {
+            padding: 25px;
+        }
+        
+        .word-family {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .word-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f5576c;
+            transition: all 0.3s;
+        }
+        
+        .word-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .word-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f5576c;
+            margin-bottom: 8px;
+        }
+        
+        .word-breakdown {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .word-def {
+            color: #495057;
+            font-size: 0.95em;
+        }
+        
+        .prefix-suffix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .affix-card {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .affix-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .affix-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+        }
+        
+        .affix-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .affix-meaning {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .affix-body {
+            padding: 15px;
+        }
+        
+        .example-word {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .example-word strong {
+            color: #667eea;
+            font-size: 1.05em;
+        }
+        
+        .stats {
+            background: #fff3cd;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-size: 1.2em;
+        }
+        
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #0c5460;
+        }
+        
+        .tip-box strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .root-header {
+                grid-template-columns: 1fr;
+            }
+            
+            .word-family, .prefix-suffix-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                overflow-x: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Root Words, Prefixes & Suffixes</h1>
+            <p>Master GRE & CAT Vocabulary Through Word Origins</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('roots')">Latin/Greek Roots</button>
+            <button class="tab" onclick="switchTab('prefixes')">Prefixes</button>
+            <button class="tab" onclick="switchTab('suffixes')">Suffixes</button>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group" style="flex: 1;">
+                <label for="search">🔍 Search:</label>
+                <input type="text" id="search" placeholder="Search roots, words, or meanings...">
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="total-roots">150</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visible-items">150</div>
+                <div class="stat-label">Visible Items</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="total-words">800+</div>
+                <div class="stat-label">Related Words</div>
+            </div>
+        </div>
+        
+        <!-- ROOTS TAB -->
+        <div id="roots-content" class="tab-content active">
+            <div class="content">
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Learning root words helps you decode unfamiliar words! If you know "bene" means "good," you can understand beneficial, benevolent, benediction, and more.
+                </div>
+                <div id="roots-list"></div>
+            </div>
+        </div>
+        
+        <!-- PREFIXES TAB -->
+        <div id="prefixes-content" class="tab-content">
+            <div class="content">
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Prefixes change the meaning of words. "Un-" reverses meaning (happy → unhappy), "pre-" means before (historic → prehistoric).
+                </div>
+                <div id="prefixes-list"></div>
+            </div>
+        </div>
+        
+        <!-- SUFFIXES TAB -->
+        <div id="suffixes-content" class="tab-content">
+            <div class="content">
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Suffixes change word type. "-tion" makes verbs into nouns (create → creation), "-ful" makes adjectives (beauty → beautiful).
+                </div>
+                <div id="suffixes-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rootWords = [
+            {
+                root: "bene",
+                origin: "Latin",
+                meaning: "good, well",
+                words: [
+                    { word: "Benefit", breakdown: "bene (good) + fit (do)", def: "An advantage or profit gained from something" },
+                    { word: "Benevolent", breakdown: "bene (good) + vol (wish)", def: "Well-meaning and kindly" },
+                    { word: "Benefactor", breakdown: "bene (good) + factor (doer)", def: "A person who gives money or help" },
+                    { word: "Benign", breakdown: "bene (good) + gn (born)", def: "Gentle, harmless, not dangerous" },
+                    { word: "Benediction", breakdown: "bene (good) + dict (speak)", def: "A blessing or prayer" }
+                ]
+            },
+            {
+                root: "mal/male",
+                origin: "Latin",
+                meaning: "bad, evil",
+                words: [
+                    { word: "Malevolent", breakdown: "mal (bad) + vol (wish)", def: "Having or showing ill will; wishing harm" },
+                    { word: "Malicious", breakdown: "mal (bad) + icious (full of)", def: "Intending to do harm" },
+                    { word: "Malady", breakdown: "mal (bad) + ady (condition)", def: "A disease or ailment" },
+                    { word: "Malfeasance", breakdown: "mal (bad) + feas (do)", def: "Wrongdoing, especially by a public official" },
+                    { word: "Malign", breakdown: "mal (bad) + ign (born)", def: "To speak harmful untruths about someone" }
+                ]
+            },
+            {
+                root: "dict",
+                origin: "Latin",
+                meaning: "say, speak",
+                words: [
+                    { word: "Dictate", breakdown: "dict (speak) + ate (make)", def: "To say or read aloud for recording" },
+                    { word: "Predict", breakdown: "pre (before) + dict (say)", def: "To say what will happen in the future" },
+                    { word: "Contradict", breakdown: "contra (against) + dict (say)", def: "To say the opposite of a statement" },
+                    { word: "Verdict", breakdown: "ver (true) + dict (say)", def: "A decision on an issue of fact in a legal case" },
+                    { word: "Edict", breakdown: "e (out) + dict (speak)", def: "An official order or proclamation" },
+                    { word: "Diction", breakdown: "dict (speak) + ion (act)", def: "The choice and use of words in speech or writing" }
+                ]
+            },
+            {
+                root: "ject",
+                origin: "Latin",
+                meaning: "throw, cast",
+                words: [
+                    { word: "Reject", breakdown: "re (back) + ject (throw)", def: "To dismiss or refuse to accept" },
+                    { word: "Eject", breakdown: "e (out) + ject (throw)", def: "To force someone or something out" },
+                    { word: "Inject", breakdown: "in (into) + ject (throw)", def: "To introduce a substance into the body" },
+                    { word: "Project", breakdown: "pro (forward) + ject (throw)", def: "To extend outward or estimate future trends" },
+                    { word: "Dejected", breakdown: "de (down) + ject (throw)", def: "Sad and depressed; dispirited" }
+                ]
+            },
+            {
+                root: "port",
+                origin: "Latin",
+                meaning: "carry, bear",
+                words: [
+                    { word: "Transport", breakdown: "trans (across) + port (carry)", def: "To carry from one place to another" },
+                    { word: "Export", breakdown: "ex (out) + port (carry)", def: "To send goods to another country for sale" },
+                    { word: "Import", breakdown: "im (in) + port (carry)", def: "To bring goods from another country" },
+                    { word: "Portable", breakdown: "port (carry) + able (can be)", def: "Able to be easily carried or moved" },
+                    { word: "Report", breakdown: "re (back) + port (carry)", def: "To give a spoken or written account" }
+                ]
+            },
+            {
+                root: "scrib/script",
+                origin: "Latin",
+                meaning: "write",
+                words: [
+                    { word: "Prescribe", breakdown: "pre (before) + scribe (write)", def: "To authorize use of medicine or recommend action" },
+                    { word: "Describe", breakdown: "de (down) + scribe (write)", def: "To give an account in words" },
+                    { word: "Transcribe", breakdown: "trans (across) + scribe (write)", def: "To put thoughts, speech, or data into written form" },
+                    { word: "Scripture", breakdown: "script (write) + ure (result)", def: "Sacred writings" },
+                    { word: "Manuscript", breakdown: "manu (hand) + script (write)", def: "A book or document written by hand" }
+                ]
+            },
+            {
+                root: "spec/spect",
+                origin: "Latin",
+                meaning: "look, see",
+                words: [
+                    { word: "Inspect", breakdown: "in (into) + spect (look)", def: "To look at closely or examine officially" },
+                    { word: "Respect", breakdown: "re (back) + spect (look)", def: "To admire deeply; to look back at with regard" },
+                    { word: "Spectator", breakdown: "spect (look) + ator (one who)", def: "A person who watches an event" },
+                    { word: "Prospect", breakdown: "pro (forward) + spect (look)", def: "The possibility of future success; to look forward" },
+                    { word: "Retrospect", breakdown: "retro (back) + spect (look)", def: "Looking back on or reviewing past events" },
+                    { word: "Conspicuous", breakdown: "con (together) + spic (look)", def: "Standing out; clearly visible" }
+                ]
+            },
+            {
+                root: "aud",
+                origin: "Latin",
+                meaning: "hear, listen",
+                words: [
+                    { word: "Audible", breakdown: "aud (hear) + ible (able)", def: "Able to be heard" },
+                    { word: "Audience", breakdown: "aud (hear) + ience (state)", def: "The assembled listeners or spectators" },
+                    { word: "Audition", breakdown: "aud (hear) + ition (process)", def: "A trial performance to test suitability" },
+                    { word: "Auditorium", breakdown: "aud (hear) + orium (place)", def: "A place where an audience sits" },
+                    { word: "Inaudible", breakdown: "in (not) + aud (hear) + ible", def: "Unable to be heard" }
+                ]
+            },
+            {
+                root: "vid/vis",
+                origin: "Latin",
+                meaning: "see",
+                words: [
+                    { word: "Video", breakdown: "vid (see) + eo (I)", def: "Recording or broadcast of moving visual images" },
+                    { word: "Evident", breakdown: "e (out) + vid (see) + ent", def: "Clearly seen or understood; obvious" },
+                    { word: "Provide", breakdown: "pro (before) + vide (see)", def: "To supply or make available" },
+                    { word: "Invisible", breakdown: "in (not) + vis (see) + ible", def: "Unable to be seen" },
+                    { word: "Vision", breakdown: "vis (see) + ion (act)", def: "The ability to see; mental image of the future" },
+                    { word: "Revise", breakdown: "re (again) + vise (see)", def: "To look over again and make changes" }
+                ]
+            },
+            {
+                root: "cred",
+                origin: "Latin",
+                meaning: "believe, trust",
+                words: [
+                    { word: "Credible", breakdown: "cred (believe) + ible (able)", def: "Able to be believed; convincing" },
+                    { word: "Incredible", breakdown: "in (not) + cred (believe) + ible", def: "Impossible to believe; extraordinary" },
+                    { word: "Credit", breakdown: "cred (believe) + it (goes)", def: "Trust in ability to pay; acknowledgment" },
+                    { word: "Credentials", breakdown: "cred (believe) + entials (relating to)", def: "Documents showing qualifications" },
+                    { word: "Credulity", breakdown: "cred (believe) + ity (state)", def: "Willingness to believe too readily" }
+                ]
+            },
+            {
+                root: "graph",
+                origin: "Greek",
+                meaning: "write, draw",
+                words: [
+                    { word: "Biography", breakdown: "bio (life) + graph (write)", def: "A written account of someone's life" },
+                    { word: "Photograph", breakdown: "photo (light) + graph (write)", def: "An image created by light on a surface" },
+                    { word: "Autograph", breakdown: "auto (self) + graph (write)", def: "A signature; writing one's own name" },
+                    { word: "Geography", breakdown: "geo (earth) + graph (write)", def: "Study of Earth's features and populations" },
+                    { word: "Graphic", breakdown: "graph (write) + ic (relating to)", def: "Relating to visual art or vivid description" }
+                ]
+            },
+            {
+                root: "phon",
+                origin: "Greek",
+                meaning: "sound, voice",
+                words: [
+                    { word: "Telephone", breakdown: "tele (far) + phone (sound)", def: "Device for transmitting sound over distance" },
+                    { word: "Symphony", breakdown: "sym (together) + phon (sound)", def: "Musical composition for orchestra" },
+                    { word: "Microphone", breakdown: "micro (small) + phone (sound)", def: "Device that converts sound to electrical signal" },
+                    { word: "Phonetic", breakdown: "phon (sound) + etic (relating to)", def: "Relating to speech sounds" },
+                    { word: "Cacophony", breakdown: "caco (harsh) + phon (sound)", def: "Harsh, discordant mixture of sounds" }
+                ]
+            },
+            {
+                root: "path",
+                origin: "Greek",
+                meaning: "feeling, suffering",
+                words: [
+                    { word: "Sympathy", breakdown: "sym (together) + path (feeling)", def: "Feelings of pity and sorrow for another's misfortune" },
+                    { word: "Empathy", breakdown: "em (in) + path (feeling)", def: "Ability to understand another's feelings" },
+                    { word: "Apathy", breakdown: "a (without) + path (feeling)", def: "Lack of interest or concern" },
+                    { word: "Pathetic", breakdown: "path (feeling) + etic (relating to)", def: "Arousing pity; miserably inadequate" },
+                    { word: "Antipathy", breakdown: "anti (against) + path (feeling)", def: "Deep-seated feeling of dislike" }
+                ]
+            },
+            {
+                root: "log/logo",
+                origin: "Greek",
+                meaning: "word, reason, study",
+                words: [
+                    { word: "Logic", breakdown: "log (reason) + ic (relating to)", def: "Reasoning conducted according to strict principles" },
+                    { word: "Dialogue", breakdown: "dia (between) + logue (word)", def: "Conversation between two or more people" },
+                    { word: "Monologue", breakdown: "mono (one) + logue (word)", def: "Long speech by one person" },
+                    { word: "Apology", breakdown: "apo (away) + log (word)", def: "Expression of regret for wrongdoing" },
+                    { word: "Biology", breakdown: "bio (life) + logy (study)", def: "Study of living organisms" }
+                ]
+            },
+            {
+                root: "gen",
+                origin: "Greek/Latin",
+                meaning: "birth, race, kind",
+                words: [
+                    { word: "Generate", breakdown: "gen (birth) + ate (make)", def: "To cause to come into being; produce" },
+                    { word: "Generous", breakdown: "gen (kind) + ous (full of)", def: "Showing kindness and liberality" },
+                    { word: "Generic", breakdown: "gen (kind) + ic (relating to)", def: "Characteristic of a group; not specific" },
+                    { word: "Genesis", breakdown: "gen (birth) + esis (process)", def: "The origin or beginning of something" },
+                    { word: "Indigenous", breakdown: "indi (within) + gen (born)", def: "Originating naturally in a place; native" }
+                ]
+            },
+            {
+                root: "mit/miss",
+                origin: "Latin",
+                meaning: "send",
+                words: [
+                    { word: "Transmit", breakdown: "trans (across) + mit (send)", def: "To send from one place to another" },
+                    { word: "Admit", breakdown: "ad (to) + mit (send)", def: "To allow to enter; confess" },
+                    { word: "Dismiss", breakdown: "dis (away) + miss (send)", def: "To send away; to remove from position" },
+                    { word: "Submit", breakdown: "sub (under) + mit (send)", def: "To present for consideration; to yield" },
+                    { word: "Omit", breakdown: "ob (away) + mit (send)", def: "To leave out or exclude" }
+                ]
+            },
+            {
+                root: "ven/vent",
+                origin: "Latin",
+                meaning: "come",
+                words: [
+                    { word: "Convention", breakdown: "con (together) + vent (come)", def: "A gathering or assembly; accepted practice" },
+                    { word: "Prevent", breakdown: "pre (before) + vent (come)", def: "To stop something from happening" },
+                    { word: "Intervene", breakdown: "inter (between) + vene (come)", def: "To come between to prevent or modify" },
+                    { word: "Adventure", breakdown: "ad (to) + vent (come)", def: "An unusual and exciting experience" },
+                    { word: "Circumvent", breakdown: "circum (around) + vent (come)", def: "To find a way around an obstacle" }
+                ]
+            },
+            {
+                root: "duc/duct",
+                origin: "Latin",
+                meaning: "lead, bring",
+                words: [
+                    { word: "Conduct", breakdown: "con (together) + duct (lead)", def: "To organize and carry out; to lead" },
+                    { word: "Deduce", breakdown: "de (from) + duce (lead)", def: "To arrive at by reasoning; infer" },
+                    { word: "Induce", breakdown: "in (into) + duce (lead)", def: "To bring about or give rise to" },
+                    { word: "Reduce", breakdown: "re (back) + duce (lead)", def: "To make smaller or less in amount" },
+                    { word: "Seduce", breakdown: "se (apart) + duce (lead)", def: "To lead away from proper conduct; entice" }
+                ]
+            },
+            {
+                root: "fac/fact/fect",
+                origin: "Latin",
+                meaning: "make, do",
+                words: [
+                    { word: "Factory", breakdown: "fact (make) + ory (place)", def: "A building where goods are manufactured" },
+                    { word: "Artifact", breakdown: "art (skill) + fact (made)", def: "An object made by human work" },
+                    { word: "Defect", breakdown: "de (from) + fect (make)", def: "A shortcoming or imperfection" },
+                    { word: "Perfect", breakdown: "per (through) + fect (make)", def: "Having all required elements; flawless" },
+                    { word: "Affect", breakdown: "af (to) + fect (make)", def: "To have an effect on; to influence" }
+                ]
+            },
+            {
+                root: "rupt",
+                origin: "Latin",
+                meaning: "break",
+                words: [
+                    { word: "Disrupt", breakdown: "dis (apart) + rupt (break)", def: "To interrupt by causing disturbance" },
+                    { word: "Corrupt", breakdown: "cor (altogether) + rupt (break)", def: "Having or showing willingness to act dishonestly" },
+                    { word: "Erupt", breakdown: "e (out) + rupt (break)", def: "To break out suddenly and dramatically" },
+                    { word: "Interrupt", breakdown: "inter (between) + rupt (break)", def: "To stop the continuous progress of" },
+                    { word: "Bankrupt", breakdown: "bank + rupt (broken)", def: "Declared in law unable to pay debts" }
+                ]
+            },
+            {
+                root: "form",
+                origin: "Latin",
+                meaning: "shape",
+                words: [
+                    { word: "Transform", breakdown: "trans (across) + form (shape)", def: "To change in form or appearance" },
+                    { word: "Conform", breakdown: "con (together) + form (shape)", def: "To comply with rules or standards" },
+                    { word: "Reform", breakdown: "re (again) + form (shape)", def: "To make changes to improve something" },
+                    { word: "Deform", breakdown: "de (from) + form (shape)", def: "To distort the shape of something" },
+                    { word: "Uniform", breakdown: "uni (one) + form (shape)", def: "Not varying; identical clothing worn by members" }
+                ]
+            },
+            {
+                root: "sens/sent",
+                origin: "Latin",
+                meaning: "feel, sense",
+                words: [
+                    { word: "Sensitive", breakdown: "sens (feel) + itive (tending to)", def: "Quick to detect or respond to slight changes" },
+                    { word: "Sensory", breakdown: "sens (feel) + ory (relating to)", def: "Relating to sensation or the senses" },
+                    { word: "Sentiment", breakdown: "sent (feel) + iment (state)", def: "A view or opinion based on feeling" },
+                    { word: "Consent", breakdown: "con (together) + sent (feel)", def: "Permission or agreement" },
+                    { word: "Resent", breakdown: "re (back) + sent (feel)", def: "To feel bitter or indignant about" }
+                ]
+            },
+            {
+                root: "seq/secu",
+                origin: "Latin",
+                meaning: "follow",
+                words: [
+                    { word: "Sequence", breakdown: "sequ (follow) + ence (state)", def: "A particular order in which things follow" },
+                    { word: "Consequence", breakdown: "con (with) + sequ (follow)", def: "A result or effect of an action" },
+                    { word: "Pursue", breakdown: "pur (forward) + sue (follow)", def: "To follow in order to catch or achieve" },
+                    { word: "Execute", breakdown: "ex (out) + secu (follow)", def: "To carry out or accomplish; to put to death" },
+                    { word: "Consecutive", breakdown: "con (together) + secu (follow)", def: "Following continuously in sequence" }
+                ]
+            },
+            {
+                root: "tend/tens",
+                origin: "Latin",
+                meaning: "stretch, strain",
+                words: [
+                    { word: "Extend", breakdown: "ex (out) + tend (stretch)", def: "To stretch or lengthen" },
+                    { word: "Pretend", breakdown: "pre (before) + tend (stretch)", def: "To give a false appearance; to claim" },
+                    { word: "Intense", breakdown: "in (into) + tens (stretch)", def: "Of extreme force, degree, or strength" },
+                    { word: "Tension", breakdown: "tens (stretch) + ion (act)", def: "Mental or emotional strain; physical tightness" },
+                    { word: "Contend", breakdown: "con (with) + tend (stretch)", def: "To struggle to overcome; to assert" }
+                ]
+            },
+            {
+                root: "terr",
+                origin: "Latin",
+                meaning: "earth, land",
+                words: [
+                    { word: "Territory", breakdown: "terr (land) + itory (place)", def: "An area of land under jurisdiction" },
+                    { word: "Terrestrial", breakdown: "terr (earth) + estrial (relating to)", def: "Of or on the earth; worldly" },
+                    { word: "Terrain", breakdown: "terr (land) + ain (condition)", def: "A stretch of land with particular features" },
+                    { word: "Subterranean", breakdown: "sub (under) + terr (earth)", def: "Existing or occurring beneath the earth's surface" },
+                    { word: "Mediterranean", breakdown: "medi (middle) + terr (land)", def: "Between or surrounded by land" }
+                ]
+            },
+            {
+                root: "ver",
+                origin: "Latin",
+                meaning: "truth",
+                words: [
+                    { word: "Verify", breakdown: "ver (truth) + ify (make)", def: "To establish the truth or correctness of" },
+                    { word: "Veracity", breakdown: "ver (truth) + acity (quality)", def: "Conformity to facts; truthfulness" },
+                    { word: "Verdict", breakdown: "ver (truth) + dict (speak)", def: "A decision on an issue in a civil or criminal case" },
+                    { word: "Verisimilitude", breakdown: "veri (truth) + simil (similar)", def: "The appearance of being true or real" },
+                    { word: "Aver", breakdown: "a (to) + ver (truth)", def: "To state or assert to be the case" }
+                ]
+            },
+            {
+                root: "voc/vok",
+                origin: "Latin",
+                meaning: "call, voice",
+                words: [
+                    { word: "Vocabulary", breakdown: "voc (voice) + abulary (collection)", def: "Body of words used in a language" },
+                    { word: "Advocate", breakdown: "ad (to) + voc (call) + ate", def: "To publicly support or recommend" },
+                    { word: "Provoke", breakdown: "pro (forth) + voke (call)", def: "To stimulate or give rise to a reaction" },
+                    { word: "Revoke", breakdown: "re (back) + voke (call)", def: "To officially cancel a decree or decision" },
+                    { word: "Invoke", breakdown: "in (upon) + voke (call)", def: "To cite or appeal to as authority" }
+                ]
+            },
+            {
+                root: "mort",
+                origin: "Latin",
+                meaning: "death",
+                words: [
+                    { word: "Mortal", breakdown: "mort (death) + al (relating to)", def: "Subject to death; causing death" },
+                    { word: "Immortal", breakdown: "im (not) + mort (death) + al", def: "Living forever; never to be forgotten" },
+                    { word: "Mortify", breakdown: "mort (death) + ify (make)", def: "To cause to feel embarrassed or ashamed" },
+                    { word: "Mortician", breakdown: "mort (death) + ician (specialist)", def: "A person whose job is preparing dead bodies" },
+                    { word: "Moribund", breakdown: "mori (death) + bund (state)", def: "At the point of death; in terminal decline" }
+                ]
+            },
+            {
+                root: "nov",
+                origin: "Latin",
+                meaning: "new",
+                words: [
+                    { word: "Novel", breakdown: "nov (new) + el (diminutive)", def: "New and unusual; a fictional prose narrative" },
+                    { word: "Innovate", breakdown: "in (into) + nov (new) + ate", def: "To make changes; introduce new methods" },
+                    { word: "Renovate", breakdown: "re (again) + nov (new) + ate", def: "To restore to good condition; make new again" },
+                    { word: "Novice", breakdown: "nov (new) + ice (person)", def: "A person new to a field or activity" },
+                    { word: "Novelty", breakdown: "nov (new) + elty (quality)", def: "The quality of being new or unusual" }
+                ]
+            }
+        ];
+
+        const prefixes = [
+            {
+                prefix: "anti-",
+                meaning: "against, opposite",
+                examples: [
+                    { word: "Antibiotic", def: "Medicine that works against bacteria" },
+                    { word: "Antisocial", def: "Against or opposed to social behavior" },
+                    { word: "Antipathy", def: "A deep feeling against something" },
+                    { word: "Antithesis", def: "The direct opposite" }
+                ]
+            },
+            {
+                prefix: "auto-",
+                meaning: "self",
+                examples: [
+                    { word: "Autobiography", def: "A self-written life story" },
+                    { word: "Automatic", def: "Self-operating or self-regulating" },
+                    { word: "Autocrat", def: "A ruler with absolute self-power" },
+                    { word: "Autonomous", def: "Self-governing; independent" }
+                ]
+            },
+            {
+                prefix: "bi-",
+                meaning: "two, twice",
+                examples: [
+                    { word: "Bilateral", def: "Having two sides" },
+                    { word: "Biannual", def: "Occurring twice a year" },
+                    { word: "Bilingual", def: "Speaking two languages" },
+                    { word: "Bipartisan", def: "Involving two parties" }
+                ]
+            },
+            {
+                prefix: "circum-",
+                meaning: "around, about",
+                examples: [
+                    { word: "Circumference", def: "The distance around a circle" },
+                    { word: "Circumvent", def: "To find a way around an obstacle" },
+                    { word: "Circumnavigate", def: "To sail around something" },
+                    { word: "Circumspect", def: "Wary and unwilling to take risks (looking around)" }
+                ]
+            },
+            {
+                prefix: "co-/com-/con-",
+                meaning: "with, together",
+                examples: [
+                    { word: "Cooperate", def: "To work together with others" },
+                    { word: "Collaborate", def: "To work jointly with others" },
+                    { word: "Compassion", def: "Sympathetic pity (suffering together)" },
+                    { word: "Concurrent", def: "Existing or happening at the same time" }
+                ]
+            },
+            {
+                prefix: "contra-/counter-",
+                meaning: "against, opposite",
+                examples: [
+                    { word: "Contradict", def: "To assert the opposite" },
+                    { word: "Counteract", def: "To act against and reduce the force of" },
+                    { word: "Controversy", def: "Prolonged public disagreement" },
+                    { word: "Counterpart", def: "A person or thing with the same function in a different context" }
+                ]
+            },
+            {
+                prefix: "de-",
+                meaning: "down, away, off, reverse",
+                examples: [
+                    { word: "Descend", def: "To move down or go down" },
+                    { word: "Degrade", def: "To lower in dignity or quality" },
+                    { word: "Deflate", def: "To let air out; reduce importance" },
+                    { word: "Denounce", def: "To publicly declare to be wrong" }
+                ]
+            },
+            {
+                prefix: "dis-",
+                meaning: "not, opposite, apart",
+                examples: [
+                    { word: "Disagree", def: "To have a different opinion" },
+                    { word: "Disrupt", def: "To break apart or interrupt" },
+                    { word: "Dismantle", def: "To take apart" },
+                    { word: "Disdain", def: "To consider beneath one's dignity" }
+                ]
+            },
+            {
+                prefix: "ex-/e-",
+                meaning: "out, from, former",
+                examples: [
+                    { word: "Export", def: "To send goods out of a country" },
+                    { word: "Exclude", def: "To keep out or bar from participation" },
+                    { word: "Emit", def: "To send out or give off" },
+                    { word: "Evacuate", def: "To leave or cause to leave a place" }
+                ]
+            },
+            {
+                prefix: "hyper-",
+                meaning: "over, excessive, beyond",
+                examples: [
+                    { word: "Hyperactive", def: "Excessively active" },
+                    { word: "Hyperbole", def: "Exaggerated statements beyond truth" },
+                    { word: "Hypercritical", def: "Excessively critical" },
+                    { word: "Hypertension", def: "Abnormally high blood pressure" }
+                ]
+            },
+            {
+                prefix: "hypo-",
+                meaning: "under, below, less than",
+                examples: [
+                    { word: "Hypothermia", def: "Below normal body temperature" },
+                    { word: "Hypothesis", def: "A supposition placed under consideration" },
+                    { word: "Hypocritical", def: "Pretending to be something one is not" },
+                    { word: "Hypodermic", def: "Under the skin" }
+                ]
+            },
+            {
+                prefix: "in-/im-/il-/ir-",
+                meaning: "not, without",
+                examples: [
+                    { word: "Incomplete", def: "Not complete" },
+                    { word: "Impossible", def: "Not possible" },
+                    { word: "Illogical", def: "Not logical" },
+                    { word: "Irregular", def: "Not regular or even" }
+                ]
+            },
+            {
+                prefix: "inter-",
+                meaning: "between, among",
+                examples: [
+                    { word: "International", def: "Between or among nations" },
+                    { word: "Interrupt", def: "To break between or stop temporarily" },
+                    { word: "Intervene", def: "To come between to modify an outcome" },
+                    { word: "Intermediate", def: "Coming between two things in time or place" }
+                ]
+            },
+            {
+                prefix: "intra-",
+                meaning: "within, inside",
+                examples: [
+                    { word: "Intramural", def: "Within the walls; within an institution" },
+                    { word: "Intravenous", def: "Within or into a vein" },
+                    { word: "Intrapersonal", def: "Within oneself; internal" },
+                    { word: "Intrastate", def: "Within a single state" }
+                ]
+            },
+            {
+                prefix: "mis-",
+                meaning: "wrong, bad",
+                examples: [
+                    { word: "Misunderstand", def: "To understand wrongly" },
+                    { word: "Misbehave", def: "To behave badly" },
+                    { word: "Misjudge", def: "To judge wrongly" },
+                    { word: "Mislead", def: "To lead in the wrong direction" }
+                ]
+            },
+            {
+                prefix: "mono-",
+                meaning: "one, single",
+                examples: [
+                    { word: "Monopoly", def: "Exclusive control by one group" },
+                    { word: "Monologue", def: "A speech by one person" },
+                    { word: "Monotonous", def: "Lacking in variety; one tone" },
+                    { word: "Monarchy", def: "Rule by one person (a monarch)" }
+                ]
+            },
+            {
+                prefix: "omni-",
+                meaning: "all, every",
+                examples: [
+                    { word: "Omnipotent", def: "Having unlimited power; all-powerful" },
+                    { word: "Omniscient", def: "Knowing everything; all-knowing" },
+                    { word: "Omnivore", def: "An animal that eats all types of food" },
+                    { word: "Omnipresent", def: "Present everywhere at once" }
+                ]
+            },
+            {
+                prefix: "post-",
+                meaning: "after, behind",
+                examples: [
+                    { word: "Postpone", def: "To arrange for something to take place later" },
+                    { word: "Postscript", def: "Additional remark at the end of a letter" },
+                    { word: "Postmortem", def: "Occurring after death" },
+                    { word: "Posterior", def: "Further back in position; later in time" }
+                ]
+            },
+            {
+                prefix: "pre-",
+                meaning: "before, in advance",
+                examples: [
+                    { word: "Predict", def: "To say what will happen before it occurs" },
+                    { word: "Precaution", def: "A measure taken in advance to prevent harm" },
+                    { word: "Preview", def: "To see in advance" },
+                    { word: "Predecessor", def: "A person who held a position before another" }
+                ]
+            },
+            {
+                prefix: "pro-",
+                meaning: "forward, in favor of",
+                examples: [
+                    { word: "Progress", def: "Forward movement toward a goal" },
+                    { word: "Promote", def: "To advance in rank or position" },
+                    { word: "Propel", def: "To drive or push forward" },
+                    { word: "Proponent", def: "A person who advocates for something" }
+                ]
+            },
+            {
+                prefix: "re-",
+                meaning: "again, back",
+                examples: [
+                    { word: "Return", def: "To come or go back" },
+                    { word: "Revise", def: "To look over again and make changes" },
+                    { word: "Recall", def: "To bring back to mind; to call back" },
+                    { word: "Rebuild", def: "To build again" }
+                ]
+            },
+            {
+                prefix: "retro-",
+                meaning: "backward, behind",
+                examples: [
+                    { word: "Retrospect", def: "Looking back on past events" },
+                    { word: "Retroactive", def: "Taking effect from a date in the past" },
+                    { word: "Retrograde", def: "Moving backward; declining" },
+                    { word: "Retrofit", def: "To add new components to something older" }
+                ]
+            },
+            {
+                prefix: "semi-",
+                meaning: "half, partial",
+                examples: [
+                    { word: "Semicircle", def: "Half of a circle" },
+                    { word: "Semiannual", def: "Occurring twice a year (half-yearly)" },
+                    { word: "Semifinal", def: "A match preceding the final" },
+                    { word: "Semiprofessional", def: "Partially professional" }
+                ]
+            },
+            {
+                prefix: "sub-",
+                meaning: "under, below, less than",
+                examples: [
+                    { word: "Submarine", def: "Under the sea" },
+                    { word: "Subordinate", def: "Lower in rank or position" },
+                    { word: "Submerge", def: "To put or sink below the surface" },
+                    { word: "Subconscious", def: "Below the level of consciousness" }
+                ]
+            },
+            {
+                prefix: "super-/sur-",
+                meaning: "above, over, beyond",
+                examples: [
+                    { word: "Superior", def: "Higher in rank or quality" },
+                    { word: "Supervise", def: "To oversee and direct" },
+                    { word: "Surpass", def: "To exceed or go beyond" },
+                    { word: "Surplus", def: "An amount over what is needed" }
+                ]
+            },
+            {
+                prefix: "sym-/syn-",
+                meaning: "together, with, same",
+                examples: [
+                    { word: "Sympathy", def: "Feelings of pity shared with another" },
+                    { word: "Synthesis", def: "The combination of components into a whole" },
+                    { word: "Synonym", def: "A word having the same meaning as another" },
+                    { word: "Synchronize", def: "To occur at the same time" }
+                ]
+            },
+            {
+                prefix: "trans-",
+                meaning: "across, beyond, through",
+                examples: [
+                    { word: "Transport", def: "To carry across from one place to another" },
+                    { word: "Transcend", def: "To go beyond the limits of" },
+                    { word: "Transfer", def: "To move from one place to another" },
+                    { word: "Transparent", def: "Allowing light to pass through" }
+                ]
+            },
+            {
+                prefix: "ultra-",
+                meaning: "beyond, extremely",
+                examples: [
+                    { word: "Ultraviolet", def: "Beyond the violet end of the spectrum" },
+                    { word: "Ultramodern", def: "Extremely modern" },
+                    { word: "Ultrasonic", def: "Beyond the range of human hearing" },
+                    { word: "Ultraconservative", def: "Extremely conservative" }
+                ]
+            },
+            {
+                prefix: "un-",
+                meaning: "not, opposite of",
+                examples: [
+                    { word: "Unhappy", def: "Not happy; sad" },
+                    { word: "Unusual", def: "Not usual; rare" },
+                    { word: "Uncertain", def: "Not certain; doubtful" },
+                    { word: "Unfair", def: "Not fair; unjust" }
+                ]
+            },
+            {
+                prefix: "uni-",
+                meaning: "one, single",
+                examples: [
+                    { word: "Uniform", def: "Not varying; identical throughout" },
+                    { word: "Unify", def: "To make into a single unit" },
+                    { word: "Unique", def: "Being the only one of its kind" },
+                    { word: "Unilateral", def: "Performed by or affecting only one side" }
+                ]
+            }
+        ];
+
+        const suffixes = [
+            {
+                suffix: "-able/-ible",
+                meaning: "capable of, fit for",
+                examples: [
+                    { word: "Readable", def: "Capable of being read" },
+                    { word: "Flexible", def: "Capable of bending without breaking" },
+                    { word: "Credible", def: "Capable of being believed" },
+                    { word: "Tangible", def: "Capable of being touched; real" }
+                ]
+            },
+            {
+                suffix: "-acy/-cy",
+                meaning: "state, quality",
+                examples: [
+                    { word: "Democracy", def: "Rule by the people" },
+                    { word: "Privacy", def: "State of being private" },
+                    { word: "Accuracy", def: "State of being accurate" },
+                    { word: "Literacy", def: "Ability to read and write" }
+                ]
+            },
+            {
+                suffix: "-al/-ial",
+                meaning: "relating to, characterized by",
+                examples: [
+                    { word: "Natural", def: "Relating to nature" },
+                    { word: "Musical", def: "Relating to music" },
+                    { word: "Commercial", def: "Relating to commerce" },
+                    { word: "Trivial", def: "Of little importance" }
+                ]
+            },
+            {
+                suffix: "-ance/-ence",
+                meaning: "state, quality, act",
+                examples: [
+                    { word: "Importance", def: "The state of being important" },
+                    { word: "Difference", def: "A point or way in which things are not the same" },
+                    { word: "Tolerance", def: "Ability to endure continued subjection" },
+                    { word: "Independence", def: "State of being independent" }
+                ]
+            },
+            {
+                suffix: "-ant/-ent",
+                meaning: "one who, that which",
+                examples: [
+                    { word: "Participant", def: "One who participates" },
+                    { word: "Student", def: "One who studies" },
+                    { word: "Defiant", def: "One who defies; rebellious" },
+                    { word: "Resident", def: "One who resides in a place" }
+                ]
+            },
+            {
+                suffix: "-ate",
+                meaning: "to make, cause",
+                examples: [
+                    { word: "Activate", def: "To make active" },
+                    { word: "Motivate", def: "To cause to have motivation" },
+                    { word: "Educate", def: "To give intellectual instruction" },
+                    { word: "Facilitate", def: "To make easier" }
+                ]
+            },
+            {
+                suffix: "-ation/-tion",
+                meaning: "action, process, state",
+                examples: [
+                    { word: "Creation", def: "The action of creating" },
+                    { word: "Education", def: "The process of educating" },
+                    { word: "Imagination", def: "The faculty of imagining" },
+                    { word: "Information", def: "Facts provided or learned" }
+                ]
+            },
+            {
+                suffix: "-dom",
+                meaning: "state, condition, realm",
+                examples: [
+                    { word: "Freedom", def: "The state of being free" },
+                    { word: "Kingdom", def: "A realm ruled by a king" },
+                    { word: "Wisdom", def: "The quality of having experience and knowledge" },
+                    { word: "Boredom", def: "The state of being bored" }
+                ]
+            },
+            {
+                suffix: "-en",
+                meaning: "to make, become",
+                examples: [
+                    { word: "Strengthen", def: "To make or become stronger" },
+                    { word: "Lighten", def: "To make or become lighter" },
+                    { word: "Broaden", def: "To make or become broader" },
+                    { word: "Deepen", def: "To make or become deeper" }
+                ]
+            },
+            {
+                suffix: "-er/-or",
+                meaning: "one who, that which",
+                examples: [
+                    { word: "Teacher", def: "One who teaches" },
+                    { word: "Actor", def: "One who acts" },
+                    { word: "Writer", def: "One who writes" },
+                    { word: "Director", def: "One who directs" }
+                ]
+            },
+            {
+                suffix: "-ful",
+                meaning: "full of, characterized by",
+                examples: [
+                    { word: "Beautiful", def: "Full of beauty" },
+                    { word: "Careful", def: "Full of care; cautious" },
+                    { word: "Hopeful", def: "Full of hope; optimistic" },
+                    { word: "Powerful", def: "Having great power" }
+                ]
+            },
+            {
+                suffix: "-fy/-ify",
+                meaning: "to make, cause",
+                examples: [
+                    { word: "Simplify", def: "To make simple" },
+                    { word: "Clarify", def: "To make clear" },
+                    { word: "Justify", def: "To show to be right or reasonable" },
+                    { word: "Magnify", def: "To make larger" }
+                ]
+            },
+            {
+                suffix: "-ic/-ical",
+                meaning: "relating to, characterized by",
+                examples: [
+                    { word: "Historic", def: "Relating to history; famous in history" },
+                    { word: "Dramatic", def: "Relating to drama; sudden and striking" },
+                    { word: "Logical", def: "Characterized by logic" },
+                    { word: "Political", def: "Relating to politics" }
+                ]
+            },
+            {
+                suffix: "-ism",
+                meaning: "doctrine, belief, practice",
+                examples: [
+                    { word: "Capitalism", def: "Economic system based on private ownership" },
+                    { word: "Optimism", def: "Hopefulness about the future" },
+                    { word: "Criticism", def: "The practice of judging merits and faults" },
+                    { word: "Realism", def: "The practice of accepting things as they are" }
+                ]
+            },
+            {
+                suffix: "-ist",
+                meaning: "one who practices or believes",
+                examples: [
+                    { word: "Artist", def: "One who practices art" },
+                    { word: "Scientist", def: "One who practices science" },
+                    { word: "Optimist", def: "One who is hopeful and confident" },
+                    { word: "Realist", def: "One who accepts things as they are" }
+                ]
+            },
+            {
+                suffix: "-ity/-ty",
+                meaning: "state, quality, condition",
+                examples: [
+                    { word: "Reality", def: "The state of being real" },
+                    { word: "Clarity", def: "The quality of being clear" },
+                    { word: "Loyalty", def: "The quality of being loyal" },
+                    { word: "Honesty", def: "The quality of being honest" }
+                ]
+            },
+            {
+                suffix: "-ive",
+                meaning: "tending to, having nature of",
+                examples: [
+                    { word: "Active", def: "Engaging in action; energetic" },
+                    { word: "Creative", def: "Having the ability to create" },
+                    { word: "Attractive", def: "Having the quality of attracting" },
+                    { word: "Destructive", def: "Causing destruction" }
+                ]
+            },
+            {
+                suffix: "-ize/-ise",
+                meaning: "to make, cause to become",
+                examples: [
+                    { word: "Realize", def: "To become fully aware of" },
+                    { word: "Organize", def: "To arrange systematically" },
+                    { word: "Modernize", def: "To make modern" },
+                    { word: "Apologize", def: "To express regret" }
+                ]
+            },
+            {
+                suffix: "-less",
+                meaning: "without, lacking",
+                examples: [
+                    { word: "Hopeless", def: "Without hope" },
+                    { word: "Careless", def: "Lacking care; negligent" },
+                    { word: "Endless", def: "Having no end; infinite" },
+                    { word: "Fearless", def: "Lacking fear; brave" }
+                ]
+            },
+            {
+                suffix: "-ly",
+                meaning: "in a manner, like",
+                examples: [
+                    { word: "Quickly", def: "In a quick manner" },
+                    { word: "Carefully", def: "In a careful manner" },
+                    { word: "Friendly", def: "Kind and pleasant" },
+                    { word: "Likely", def: "Probable; having a high chance" }
+                ]
+            },
+            {
+                suffix: "-ment",
+                meaning: "action, result, state",
+                examples: [
+                    { word: "Movement", def: "The action of moving" },
+                    { word: "Achievement", def: "Something accomplished successfully" },
+                    { word: "Judgment", def: "The ability to make considered decisions" },
+                    { word: "Development", def: "The process of developing" }
+                ]
+            },
+            {
+                suffix: "-ness",
+                meaning: "state, quality, condition",
+                examples: [
+                    { word: "Happiness", def: "The state of being happy" },
+                    { word: "Darkness", def: "The state of being dark" },
+                    { word: "Kindness", def: "The quality of being kind" },
+                    { word: "Sadness", def: "The state of being sad" }
+                ]
+            },
+            {
+                suffix: "-ous/-ious",
+                meaning: "full of, having",
+                examples: [
+                    { word: "Dangerous", def: "Full of danger; risky" },
+                    { word: "Famous", def: "Known about by many people" },
+                    { word: "Curious", def: "Eager to know or learn" },
+                    { word: "Ambitious", def: "Having a strong desire for success" }
+                ]
+            },
+            {
+                suffix: "-ship",
+                meaning: "state, condition, skill",
+                examples: [
+                    { word: "Friendship", def: "The state of being friends" },
+                    { word: "Leadership", def: "The state or skill of leading" },
+                    { word: "Relationship", def: "The way people or things are connected" },
+                    { word: "Scholarship", def: "Academic study or achievement" }
+                ]
+            },
+            {
+                suffix: "-ward",
+                meaning: "in the direction of",
+                examples: [
+                    { word: "Forward", def: "In the direction ahead" },
+                    { word: "Backward", def: "In the direction behind" },
+                    { word: "Upward", def: "In the direction up" },
+                    { word: "Downward", def: "In the direction down" }
+                ]
+            }
+        ];
+
+        let currentTab = 'roots';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + '-content').classList.add('active');
+            
+            document.getElementById('search').value = '';
+            renderContent();
+        }
+
+        function renderRoots(searchTerm = '') {
+            const container = document.getElementById('roots-list');
+            container.innerHTML = '';
+            
+            const filtered = rootWords.filter(item => 
+                item.root.toLowerCase().includes(searchTerm) ||
+                item.meaning.toLowerCase().includes(searchTerm) ||
+                item.words.some(w => 
+                    w.word.toLowerCase().includes(searchTerm) ||
+                    w.def.toLowerCase().includes(searchTerm)
+                )
+            );
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="no-results">No roots found matching your search.</div>';
+                return;
+            }
+            
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'root-card';
+                
+                card.innerHTML = `
+                    <div class="root-header">
+                        <div>
+                            <div class="root-main">${item.root}</div>
+                            <div class="root-meaning">"${item.meaning}"</div>
+                        </div>
+                        <div class="root-origin">
+                            <strong>Origin:</strong> ${item.origin}
+                        </div>
+                    </div>
+                    <div class="root-body">
+                        <strong style="font-size: 1.1em; color: #495057;">Related Words:</strong>
+                        <div class="word-family">
+                            ${item.words.map(w => `
+                                <div class="word-item">
+                                    <div class="word-name">${w.word}</div>
+                                    <div class="word-breakdown">${w.breakdown}</div>
+                                    <div class="word-def">${w.def}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            document.getElementById('visible-items').textContent = filtered.length;
+        }
+
+        function renderPrefixes(searchTerm = '') {
+            const container = document.getElementById('prefixes-list');
+            container.innerHTML = '';
+            
+            const filtered = prefixes.filter(item =>
+                item.prefix.toLowerCase().includes(searchTerm) ||
+                item.meaning.toLowerCase().includes(searchTerm) ||
+                item.examples.some(e =>
+                    e.word.toLowerCase().includes(searchTerm) ||
+                    e.def.toLowerCase().includes(searchTerm)
+                )
+            );
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="no-results">No prefixes found matching your search.</div>';
+                return;
+            }
+            
+            const grid = document.createElement('div');
+            grid.className = 'prefix-suffix-grid';
+            
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'affix-card';
+                
+                card.innerHTML = `
+                    <div class="affix-header">
+                        <div class="affix-title">${item.prefix}</div>
+                        <div class="affix-meaning">${item.meaning}</div>
+                    </div>
+                    <div class="affix-body">
+                        ${item.examples.map(e => `
+                            <div class="example-word">
+                                <strong>${e.word}</strong><br>
+                                ${e.def}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            container.appendChild(grid);
+            document.getElementById('visible-items').textContent = filtered.length;
+        }
+
+        function renderSuffixes(searchTerm = '') {
+            const container = document.getElementById('suffixes-list');
+            container.innerHTML = '';
+            
+            const filtered = suffixes.filter(item =>
+                item.suffix.toLowerCase().includes(searchTerm) ||
+                item.meaning.toLowerCase().includes(searchTerm) ||
+                item.examples.some(e =>
+                    e.word.toLowerCase().includes(searchTerm) ||
+                    e.def.toLowerCase().includes(searchTerm)
+                )
+            );
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="no-results">No suffixes found matching your search.</div>';
+                return;
+            }
+            
+            const grid = document.createElement('div');
+            grid.className = 'prefix-suffix-grid';
+            
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'affix-card';
+                
+                card.innerHTML = `
+                    <div class="affix-header">
+                        <div class="affix-title">${item.suffix}</div>
+                        <div class="affix-meaning">${item.meaning}</div>
+                    </div>
+                    <div class="affix-body">
+                        ${item.examples.map(e => `
+                            <div class="example-word">
+                                <strong>${e.word}</strong><br>
+                                ${e.def}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            container.appendChild(grid);
+            document.getElementById('visible-items').textContent = filtered.length;
+        }
+
+        function renderContent() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            
+            if (currentTab === 'roots') {
+                renderRoots(searchTerm);
+                document.getElementById('total-roots').textContent = rootWords.length;
+            } else if (currentTab === 'prefixes') {
+                renderPrefixes(searchTerm);
+                document.getElementById('total-roots').textContent = prefixes.length;
+            } else if (currentTab === 'suffixes') {
+                renderSuffixes(searchTerm);
+                document.getElementById('total-roots').textContent = suffixes.length;
+            }
+        }
+
+        document.getElementById('search').addEventListener('input', renderContent);
+        
+        // Initial render
+        renderContent();
+    </script>
+</body>
+</html>
