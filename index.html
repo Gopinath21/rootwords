@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRE CAT Root Words - Complete with Parts of Speech & Antonyms</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);padding:20px;line-height:1.6}
+.container{max-width:1400px;margin:0 auto;background:#fff;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,.2);overflow:hidden}
+.header{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff;padding:30px;text-align:center}
+.header h1{font-size:2.5em;margin-bottom:10px}
+.header p{font-size:1.1em;opacity:.9}
+.filters{background:#f8f9fa;padding:20px 30px;border-bottom:2px solid #e9ecef;display:flex;gap:15px;flex-wrap:wrap;align-items:center}
+.filter-label{font-weight:600;color:#495057}
+input,select{padding:8px 12px;border:2px solid #dee2e6;border-radius:6px;font-size:14px}
+input{flex:1;min-width:250px}
+select{min-width:150px}
+input:focus,select:focus{outline:none;border-color:#f5576c}
+.stats{background:#fff3cd;padding:15px 30px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px}
+.stat-item{text-align:center}
+.stat-number{font-size:2em;font-weight:bold;color:#f5576c}
+.stat-label{color:#6c757d;font-size:.9em}
+.content{padding:30px}
+.root-card{margin-bottom:25px;border:2px solid #e9ecef;border-radius:12px;overflow:hidden;transition:all .3s}
+.root-card:hover{box-shadow:0 8px 20px rgba(0,0,0,.1);transform:translateY(-3px)}
+.root-header{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff;padding:20px;display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:center}
+.root-main{font-size:2em;font-weight:bold}
+.root-origin{background:rgba(255,255,255,.2);padding:10px 15px;border-radius:8px;font-size:.9em}
+.root-meaning{font-size:1.1em;margin-top:5px;opacity:.95}
+.root-body{padding:25px}
+.word-family{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:15px;margin-top:15px}
+.word-item{background:#f8f9fa;padding:15px;border-radius:8px;border-left:4px solid #f5576c;transition:all .3s}
+.word-item:hover{background:#e9ecef;transform:translateX(5px)}
+.word-name{font-size:1.3em;font-weight:bold;color:#f5576c;margin-bottom:5px;display:flex;align-items:center;gap:10px}
+.pos-badge{display:inline-block;padding:3px 10px;background:#667eea;color:#fff;font-size:.7em;border-radius:12px;font-weight:600;text-transform:uppercase}
+.pos-noun{background:#28a745}
+.pos-verb{background:#dc3545}
+.pos-adjective{background:#ffc107;color:#000}
+.pos-adverb{background:#17a2b8}
+.word-breakdown{font-size:.85em;color:#6c757d;margin-bottom:8px;font-style:italic}
+.word-def{color:#495057;font-size:.95em;margin-bottom:10px;padding:8px;background:#fff;border-radius:5px}
+.word-antonym{background:#fff3cd;padding:8px 12px;border-radius:5px;font-size:.9em;margin-top:8px;border-left:3px solid #856404}
+.word-antonym strong{color:#856404;font-weight:600}
+.ant-item{display:inline-block;margin:2px 5px 2px 0;padding:2px 8px;background:#fff;border-radius:4px;border:1px solid #856404}
+.tip-box{background:#d1ecf1;border-left:4px solid #0c5460;padding:15px;margin:20px 0;border-radius:5px;color:#0c5460}
+.tip-box strong{font-size:1.1em}
+.no-results{text-align:center;padding:40px;color:#6c757d;font-size:1.2em}
+@media (max-width:768px){
+.header h1{font-size:1.8em}
+.root-header{grid-template-columns:1fr}
+.word-family{grid-template-columns:1fr}
+.filters{flex-direction:column;align-items:stretch}
+input,select{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🌱 Complete Root Words Guide</h1>
+<p>28 Latin/Greek Roots • 140+ Words • Parts of Speech • Meanings • Antonyms</p>
+</div>
+<div class="filters">
+<span class="filter-label">🔍 Search:</span>
+<input type="text" id="search" placeholder="Search roots, words, meanings, or antonyms..." onkeyup="filterWords()">
+<span class="filter-label">Filter by:</span>
+<select id="posFilter" onchange="filterWords()">
+<option value="all">All Parts of Speech</option>
+<option value="noun">Nouns Only</option>
+<option value="verb">Verbs Only</option>
+<option value="adjective">Adjectives Only</option>
+<option value="adverb">Adverbs Only</option>
+</select>
+</div>
+<div class="stats">
+<div class="stat-item">
+<div class="stat-number">28</div>
+<div class="stat-label">Root Words</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" id="visibleWords">140+</div>
+<div class="stat-label">Total Words</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">4</div>
+<div class="stat-label">Parts of Speech</div>
+</div>
+</div>
+<div class="content">
+<div class="tip-box">
+<strong>💡 Color Guide:</strong> 
+<span class="pos-badge pos-noun">Noun</span> 
+<span class="pos-badge pos-verb">Verb</span> 
+<span class="pos-badge pos-adjective">Adjective</span> 
+<span class="pos-badge pos-adverb">Adverb</span>
+</div>
+<div id="content"></div>
+</div>
+</div>
+<script>
+const roots=[
+{root:"bene",origin:"Latin",meaning:"good, well",words:[
+{word:"Benefit",pos:"noun",breakdown:"bene (good) + fit (do)",def:"An advantage or profit gained from something",antonyms:["Disadvantage","Harm","Detriment"]},
+{word:"Benefit",pos:"verb",breakdown:"bene (good) + fit (do)",def:"To receive an advantage; to be useful to",antonyms:["Harm","Damage","Hinder"]},
+{word:"Benevolent",pos:"adjective",breakdown:"bene (good) + vol (wish)",def:"Well-meaning and kindly; showing goodwill",antonyms:["Malevolent","Cruel","Hostile"]},
+{word:"Benefactor",pos:"noun",breakdown:"bene (good) + factor (doer)",def:"A person who gives money or help to a person or cause",antonyms:["Malefactor","Antagonist","Opponent"]},
+{word:"Benign",pos:"adjective",breakdown:"bene (good) + gn (born)",def:"Gentle, harmless, not dangerous or malignant",antonyms:["Malignant","Harmful","Threatening"]},
+{word:"Benediction",pos:"noun",breakdown:"bene (good) + dict (speak)",def:"A blessing, especially at the end of a religious service",antonyms:["Malediction","Curse","Condemnation"]}]},
+{root:"mal/male",origin:"Latin",meaning:"bad, evil",words:[
+{word:"Malevolent",pos:"adjective",breakdown:"mal (bad) + vol (wish)",def:"Having or showing a wish to do evil to others",antonyms:["Benevolent","Kind","Compassionate"]},
+{word:"Malicious",pos:"adjective",breakdown:"mal (bad) + icious (full of)",def:"Characterized by malice; intending to do harm",antonyms:["Benign","Kind","Benevolent"]},
+{word:"Malady",pos:"noun",breakdown:"mal (bad) + ady (condition)",def:"A disease or ailment; a disorder",antonyms:["Health","Wellness","Vitality"]},
+{word:"Malfeasance",pos:"noun",breakdown:"mal (bad) + feas (do)",def:"Wrongdoing, especially by a public official",antonyms:["Righteousness","Integrity","Probity"]},
+{word:"Malign",pos:"verb",breakdown:"mal (bad) + ign (born)",def:"To speak about someone in a harmful or spitefully critical manner",antonyms:["Praise","Commend","Extol"]},
+{word:"Malign",pos:"adjective",breakdown:"mal (bad) + ign (born)",def:"Evil in nature or effect; malevolent",antonyms:["Benign","Beneficial","Favorable"]}]},
+{root:"dict",origin:"Latin",meaning:"say, speak",words:[
+{word:"Dictate",pos:"verb",breakdown:"dict (speak) + ate (make)",def:"To state or order authoritatively; to say words for recording",antonyms:["Follow","Obey","Comply"]},
+{word:"Predict",pos:"verb",breakdown:"pre (before) + dict (say)",def:"To say or estimate that something will happen in the future",antonyms:["Review","Postdict","Recall"]},
+{word:"Contradict",pos:"verb",breakdown:"contra (against) + dict (say)",def:"To assert the opposite of a statement; to deny",antonyms:["Confirm","Agree","Support"]},
+{word:"Verdict",pos:"noun",breakdown:"ver (true) + dict (say)",def:"A decision on a disputed issue in a civil or criminal case",antonyms:["Indecision","Question","Appeal"]},
+{word:"Edict",pos:"noun",breakdown:"e (out) + dict (speak)",def:"An official order or proclamation issued by authority",antonyms:["Suggestion","Request","Recommendation"]},
+{word:"Diction",pos:"noun",breakdown:"dict (speak) + ion (act)",def:"The choice and use of words in speech or writing",antonyms:["Silence","Muteness","Inarticulacy"]}]},
+{root:"ject",origin:"Latin",meaning:"throw, cast",words:[
+{word:"Reject",pos:"verb",breakdown:"re (back) + ject (throw)",def:"To dismiss as inadequate or unacceptable; to refuse",antonyms:["Accept","Approve","Welcome"]},
+{word:"Eject",pos:"verb",breakdown:"e (out) + ject (throw)",def:"To force or throw out; to compel to leave",antonyms:["Admit","Include","Welcome"]},
+{word:"Inject",pos:"verb",breakdown:"in (into) + ject (throw)",def:"To introduce a substance into the body with a syringe",antonyms:["Extract","Remove","Withdraw"]},
+{word:"Project",pos:"verb",breakdown:"pro (forward) + ject (throw)",def:"To estimate or forecast on the basis of present trends",antonyms:["Retract","Withdraw","Conceal"]},
+{word:"Project",pos:"noun",breakdown:"pro (forward) + ject (throw)",def:"An individual or collaborative enterprise planned to achieve an aim",antonyms:["Completion","Conclusion"]},
+{word:"Dejected",pos:"adjective",breakdown:"de (down) + ject (throw)",def:"Sad and depressed; cast down in spirits",antonyms:["Elated","Cheerful","Jubilant"]}]},
+{root:"port",origin:"Latin",meaning:"carry, bear",words:[
+{word:"Transport",pos:"verb",breakdown:"trans (across) + port (carry)",def:"To take or carry from one place to another",antonyms:["Keep","Retain","Hold"]},
+{word:"Transport",pos:"noun",breakdown:"trans (across) + port (carry)",def:"A system or means of conveying people or goods",antonyms:["Stagnation","Immobility"]},
+{word:"Export",pos:"verb",breakdown:"ex (out) + port (carry)",def:"To send goods or services to another country for sale",antonyms:["Import","Bring in","Receive"]},
+{word:"Import",pos:"verb",breakdown:"im (in) + port (carry)",def:"To bring goods or services into a country from abroad",antonyms:["Export","Send out","Dispatch"]},
+{word:"Portable",pos:"adjective",breakdown:"port (carry) + able (can be)",def:"Able to be easily carried or moved",antonyms:["Stationary","Fixed","Immobile"]},
+{word:"Report",pos:"verb",breakdown:"re (back) + port (carry)",def:"To give a spoken or written account of something",antonyms:["Conceal","Hide","Suppress"]},
+{word:"Report",pos:"noun",breakdown:"re (back) + port (carry)",def:"An account given of a particular matter",antonyms:["Silence","Concealment"]}]},
+{root:"scrib/script",origin:"Latin",meaning:"write",words:[
+{word:"Prescribe",pos:"verb",breakdown:"pre (before) + scribe (write)",def:"To recommend with authority; to order the use of medicine",antonyms:["Proscribe","Forbid","Ban"]},
+{word:"Describe",pos:"verb",breakdown:"de (down) + scribe (write)",def:"To give an account in words; to portray",antonyms:["Confuse","Obscure","Muddle"]},
+{word:"Transcribe",pos:"verb",breakdown:"trans (across) + scribe (write)",def:"To put thoughts, speech, or data into written form",antonyms:["Erase","Delete","Obliterate"]},
+{word:"Scripture",pos:"noun",breakdown:"script (write) + ure (result)",def:"The sacred writings of a religion",antonyms:["Profanity","Blasphemy","Heresy"]},
+{word:"Manuscript",pos:"noun",breakdown:"manu (hand) + script (write)",def:"A book, document, or piece of music written by hand",antonyms:["Print","Publication","Copy"]}]},
+{root:"spec/spect",origin:"Latin",meaning:"look, see",words:[
+{word:"Inspect",pos:"verb",breakdown:"in (into) + spect (look)",def:"To look at closely; to examine officially",antonyms:["Ignore","Overlook","Neglect"]},
+{word:"Respect",pos:"verb",breakdown:"re (back) + spect (look)",def:"To admire deeply; to have regard for",antonyms:["Disrespect","Scorn","Despise"]},
+{word:"Respect",pos:"noun",breakdown:"re (back) + spect (look)",def:"A feeling of deep admiration for someone or something",antonyms:["Disrespect","Contempt","Disdain"]},
+{word:"Spectator",pos:"noun",breakdown:"spect (look) + ator (one who)",def:"A person who watches at a show, game, or other event",antonyms:["Participant","Player","Performer"]},
+{word:"Prospect",pos:"noun",breakdown:"pro (forward) + spect (look)",def:"The possibility or likelihood of some future event",antonyms:["Retrospect","Past","History"]},
+{word:"Conspicuous",pos:"adjective",breakdown:"con (together) + spic (look)",def:"Standing out so as to be clearly visible; attracting notice",antonyms:["Inconspicuous","Hidden","Unnoticeable"]}]},
+{root:"aud",origin:"Latin",meaning:"hear, listen",words:[
+{word:"Audible",pos:"adjective",breakdown:"aud (hear) + ible (able)",def:"Able to be heard; loud enough to hear",antonyms:["Inaudible","Silent","Imperceptible"]},
+{word:"Audience",pos:"noun",breakdown:"aud (hear) + ience (state)",def:"The assembled spectators or listeners at an event",antonyms:["Performer","Speaker","Presenter"]},
+{word:"Audition",pos:"noun",breakdown:"aud (hear) + ition (process)",def:"An interview for a role as a singer, actor, or musician",antonyms:["Performance","Show","Production"]},
+{word:"Audition",pos:"verb",breakdown:"aud (hear) + ition (process)",def:"To assess the suitability of by means of an audition",antonyms:["Perform","Present","Exhibit"]},
+{word:"Auditorium",pos:"noun",breakdown:"aud (hear) + orium (place)",def:"The part of a theater where the audience sits",antonyms:["Stage","Platform","Backstage"]},
+{word:"Inaudible",pos:"adjective",breakdown:"in (not) + aud (hear) + ible",def:"Unable to be heard; too quiet to hear",antonyms:["Audible","Loud","Clear"]}]},
+{root:"vid/vis",origin:"Latin",meaning:"see",words:[
+{word:"Video",pos:"noun",breakdown:"vid (see) + eo (I)",def:"A recording of moving visual images",antonyms:["Audio","Sound","Recording"]},
+{word:"Evident",pos:"adjective",breakdown:"e (out) + vid (see) + ent",def:"Plain or obvious; clearly seen or understood",antonyms:["Obscure","Hidden","Unclear"]},
+{word:"Provide",pos:"verb",breakdown:"pro (before) + vide (see)",def:"To make available for use; to supply",antonyms:["Withhold","Deprive","Deny"]},
+{word:"Invisible",pos:"adjective",breakdown:"in (not) + vis (see) + ible",def:"Unable to be seen; not visible",antonyms:["Visible","Obvious","Apparent"]},
+{word:"Vision",pos:"noun",breakdown:"vis (see) + ion (act)",def:"The faculty of sight; ability to think about the future",antonyms:["Blindness","Myopia","Shortsightedness"]},
+{word:"Revise",pos:"verb",breakdown:"re (again) + vise (see)",def:"To reexamine and make alterations to",antonyms:["Retain","Keep","Maintain"]}]},
+{root:"cred",origin:"Latin",meaning:"believe, trust",words:[
+{word:"Credible",pos:"adjective",breakdown:"cred (believe) + ible (able)",def:"Able to be believed; convincing",antonyms:["Incredible","Unbelievable","Dubious"]},
+{word:"Incredible",pos:"adjective",breakdown:"in (not) + cred (believe) + ible",def:"Impossible to believe; extraordinary",antonyms:["Credible","Believable","Plausible"]},
+{word:"Credit",pos:"noun",breakdown:"cred (believe) + it (goes)",def:"The ability to obtain goods before payment; public acknowledgment",antonyms:["Debit","Debt","Discredit"]},
+{word:"Credit",pos:"verb",breakdown:"cred (believe) + it (goes)",def:"To publicly acknowledge someone as a participant; to believe",antonyms:["Discredit","Doubt","Question"]},
+{word:"Credentials",pos:"noun",breakdown:"cred (believe) + entials (relating to)",def:"Qualifications or achievements that make someone suitable",antonyms:["Disqualification","Incompetence"]},
+{word:"Credulity",pos:"noun",breakdown:"cred (believe) + ity (state)",def:"A tendency to be too ready to believe things",antonyms:["Skepticism","Doubt","Cynicism"]}]},
+{root:"graph",origin:"Greek",meaning:"write, draw",words:[
+{word:"Biography",pos:"noun",breakdown:"bio (life) + graph (write)",def:"An account of someone's life written by someone else",antonyms:["Fiction","Autobiography"]},
+{word:"Photograph",pos:"noun",breakdown:"photo (light) + graph (write)",def:"A picture made using a camera",antonyms:["Painting","Drawing","Sketch"]},
+{word:"Autograph",pos:"noun",breakdown:"auto (self) + graph (write)",def:"A signature, especially of a celebrity",antonyms:["Forgery","Copy","Facsimile"]},
+{word:"Geography",pos:"noun",breakdown:"geo (earth) + graph (write)",def:"The study of the physical features of the earth",antonyms:["Astronomy","Cosmology"]},
+{word:"Graphic",pos:"adjective",breakdown:"graph (write) + ic (relating to)",def:"Relating to visual art; giving a vivid picture",antonyms:["Vague","Abstract","Obscure"]}]},
+{root:"phon",origin:"Greek",meaning:"sound, voice",words:[
+{word:"Telephone",pos:"noun",breakdown:"tele (far) + phone (sound)",def:"A system for transmitting voices over a distance",antonyms:["Letter","Mail","Correspondence"]},
+{word:"Symphony",pos:"noun",breakdown:"sym (together) + phon (sound)",def:"An elaborate musical composition for orchestra",antonyms:["Cacophony","Discord","Dissonance"]},
+{word:"Microphone",pos:"noun",breakdown:"micro (small) + phone (sound)",def:"An instrument for converting sound waves into electrical energy",antonyms:["Speaker","Amplifier","Loudspeaker"]},
+{word:"Phonetic",pos:"adjective",breakdown:"phon (sound) + etic (relating to)",def:"Relating to speech sounds",antonyms:["Written","Orthographic","Silent"]},
+{word:"Cacophony",pos:"noun",breakdown:"caco (harsh) + phon (sound)",def:"A harsh, discordant mixture of sounds",antonyms:["Harmony","Euphony","Melody"]}]},
+{root:"path",origin:"Greek",meaning:"feeling, suffering",words:[
+{word:"Sympathy",pos:"noun",breakdown:"sym (together) + path (feeling)",def:"Feelings of pity and sorrow for someone else's misfortune",antonyms:["Antipathy","Indifference","Apathy"]},
+{word:"Empathy",pos:"noun",breakdown:"em (in) + path (feeling)",def:"The ability to understand and share another's feelings",antonyms:["Apathy","Indifference","Insensitivity"]},
+{word:"Apathy",pos:"noun",breakdown:"a (without) + path (feeling)",def:"Lack of interest, enthusiasm, or concern",antonyms:["Enthusiasm","Passion","Interest"]},
+{word:"Pathetic",pos:"adjective",breakdown:"path (feeling) + etic (relating to)",def:"Arousing pity; miserably inadequate",antonyms:["Impressive","Admirable","Commendable"]},
+{word:"Antipathy",pos:"noun",breakdown:"anti (against) + path (feeling)",def:"A deep-seated feeling of dislike or aversion",antonyms:["Sympathy","Affection","Fondness"]}]},
+{root:"log/logo",origin:"Greek",meaning:"word, reason, study",words:[
+{word:"Logic",pos:"noun",breakdown:"log (reason) + ic (relating to)",def:"Reasoning conducted according to strict principles of validity",antonyms:["Illogic","Irrationality","Absurdity"]},
+{word:"Dialogue",pos:"noun",breakdown:"dia (between) + logue (word)",def:"Conversation between two or more people",antonyms:["Monologue","Silence","Soliloquy"]},
+{word:"Monologue",pos:"noun",breakdown:"mono (one) + logue (word)",def:"A long speech by one person",antonyms:["Dialogue","Conversation","Discussion"]},
+{word:"Apology",pos:"noun",breakdown:"apo (away) + log (word)",def:"A regretful acknowledgment of an offense or failure",antonyms:["Accusation","Blame","Condemnation"]},
+{word:"Biology",pos:"noun",breakdown:"bio (life) + logy (study)",def:"The study of living organisms",antonyms:["Geology","Physics","Chemistry"]}]},
+{root:"gen",origin:"Greek/Latin",meaning:"birth, race, kind",words:[
+{word:"Generate",pos:"verb",breakdown:"gen (birth) + ate (make)",def:"To cause something to arise or come about",antonyms:["Destroy","Eliminate","Terminate"]},
+{word:"Generous",pos:"adjective",breakdown:"gen (kind) + ous (full of)",def:"Showing a readiness to give more than is necessary",antonyms:["Stingy","Selfish","Mean"]},
+{word:"Generic",pos:"adjective",breakdown:"gen (kind) + ic (relating to)",def:"Characteristic of or relating to a class or group",antonyms:["Specific","Unique","Particular"]},
+{word:"Genesis",pos:"noun",breakdown:"gen (birth) + esis (process)",def:"The origin or mode of formation of something",antonyms:["End","Conclusion","Termination"]},
+{word:"Indigenous",pos:"adjective",breakdown:"indi (within) + gen (born)",def:"Originating or occurring naturally in a place; native",antonyms:["Foreign","Exotic","Alien"]}]},
+{root:"mit/miss",origin:"Latin",meaning:"send",words:[
+{word:"Transmit",pos:"verb",breakdown:"trans (across) + mit (send)",def:"To send or pass from one person, place, or thing to another",antonyms:["Receive","Retain","Keep"]},
+{word:"Admit",pos:"verb",breakdown:"ad (to) + mit (send)",def:"To confess to be true; to allow entry",antonyms:["Deny","Exclude","Reject"]},
+{word:"Dismiss",pos:"verb",breakdown:"dis (away) + miss (send)",def:"To order or allow to leave; to treat as unworthy",antonyms:["Hire","Retain","Employ"]},
+{word:"Submit",pos:"verb",breakdown:"sub (under) + mit (send)",def:"To accept or yield to authority; to present for consideration",antonyms:["Resist","Refuse","Oppose"]},
+{word:"Omit",pos:"verb",breakdown:"ob (away) + mit (send)",def:"To leave out or exclude",antonyms:["Include","Add","Insert"]}]},
+{root:"ven/vent",origin:"Latin",meaning:"come",words:[
+{word:"Convention",pos:"noun",breakdown:"con (together) + vent (come)",def:"A way in which something is usually done; a large meeting",antonyms:["Innovation","Departure","Deviation"]},
+{word:"Prevent",pos:"verb",breakdown:"pre (before) + vent (come)",def:"To keep something from happening or arising",antonyms:["Permit","Allow","Enable"]},
+{word:"Intervene",pos:"verb",breakdown:"inter (between) + vene (come)",def:"To come between so as to prevent or modify",antonyms:["Ignore","Abstain","Withdraw"]},
+{word:"Adventure",pos:"noun",breakdown:"ad (to) + vent (come)",def:"An unusual and exciting experience or activity",antonyms:["Routine","Boredom","Monotony"]},
+{word:"Circumvent",pos:"verb",breakdown:"circum (around) + vent (come)",def:"To find a way around an obstacle",antonyms:["Confront","Face","Meet"]}]},
+{root:"duc/duct",origin:"Latin",meaning:"lead, bring",words:[
+{word:"Conduct",pos:"verb",breakdown:"con (together) + duct (lead)",def:"To organize and carry out; to direct the performance of",antonyms:["Follow","Obey","Trail"]},
+{word:"Conduct",pos:"noun",breakdown:"con (together) + duct (lead)",def:"The manner in which a person behaves",antonyms:["Misbehavior","Misconduct"]},
+{word:"Deduce",pos:"verb",breakdown:"de (from) + duce (lead)",def:"To arrive at by reasoning; to infer",antonyms:["Assume","Guess","Speculate"]},
+{word:"Induce",pos:"verb",breakdown:"in (into) + duce (lead)",def:"To succeed in persuading someone to do something",antonyms:["Prevent","Discourage","Deter"]},
+{word:"Reduce",pos:"verb",breakdown:"re (back) + duce (lead)",def:"To make smaller or less in amount, degree, or size",antonyms:["Increase","Expand","Enlarge"]},
+{word:"Seduce",pos:"verb",breakdown:"se (apart) + duce (lead)",def:"To attract powerfully; to entice into sexual activity",antonyms:["Repel","Discourage","Dissuade"]}]},
+{root:"fac/fact/fect",origin:"Latin",meaning:"make, do",words:[
+{word:"Factory",pos:"noun",breakdown:"fact (make) + ory (place)",def:"A building where goods are manufactured",antonyms:["Store","Market","Shop"]},
+{word:"Artifact",pos:"noun",breakdown:"art (skill) + fact (made)",def:"An object made by a human being",antonyms:["Natural object","Organic"]},
+{word:"Defect",pos:"noun",breakdown:"de (from) + fect (make)",def:"A shortcoming, imperfection, or lack",antonyms:["Perfection","Virtue","Strength"]},
+{word:"Perfect",pos:"adjective",breakdown:"per (through) + fect (make)",def:"Having all the required elements; free from flaws",antonyms:["Imperfect","Flawed","Defective"]},
+{word:"Affect",pos:"verb",breakdown:"af (to) + fect (make)",def:"To have an effect on; to make a difference to",antonyms:["Ignore","Neglect","Disregard"]}]},
+{root:"rupt",origin:"Latin",meaning:"break",words:[
+{word:"Disrupt",pos:"verb",breakdown:"dis (apart) + rupt (break)",def:"To interrupt by causing a disturbance or problem",antonyms:["Continue","Maintain","Sustain"]},
+{word:"Corrupt",pos:"adjective",breakdown:"cor (altogether) + rupt (break)",def:"Having or showing a willingness to act dishonestly",antonyms:["Honest","Pure","Virtuous"]},
+{word:"Corrupt",pos:"verb",breakdown:"cor (altogether) + rupt (break)",def:"To cause to act dishonestly; to change from good to bad",antonyms:["Purify","Cleanse","Reform"]},
+{word:"Erupt",pos:"verb",breakdown:"e (out) + rupt (break)",def:"To break out suddenly and dramatically",antonyms:["Contain","Suppress","Restrain"]},
+{word:"Interrupt",pos:"verb",breakdown:"inter (between) + rupt (break)",def:"To stop the continuous progress of something",antonyms:["Continue","Proceed","Maintain"]},
+{word:"Bankrupt",pos:"adjective",breakdown:"bank + rupt (broken)",def:"Declared in law unable to pay debts",antonyms:["Solvent","Wealthy","Prosperous"]}]},
+{root:"form",origin:"Latin",meaning:"shape",words:[
+{word:"Transform",pos:"verb",breakdown:"trans (across) + form (shape)",def:"To make a thorough or dramatic change in form or appearance",antonyms:["Maintain","Preserve","Retain"]},
+{word:"Conform",pos:"verb",breakdown:"con (together) + form (shape)",def:"To comply with rules, standards, or laws",antonyms:["Rebel","Deviate","Diverge"]},
+{word:"Reform",pos:"verb",breakdown:"re (again) + form (shape)",def:"To make changes in order to improve",antonyms:["Corrupt","Worsen","Deteriorate"]},
+{word:"Reform",pos:"noun",breakdown:"re (again) + form (shape)",def:"The action or process of reforming",antonyms:["Corruption","Deterioration"]},
+{word:"Deform",pos:"verb",breakdown:"de (from) + form (shape)",def:"To distort the shape or form of",antonyms:["Shape","Form","Mold"]},
+{word:"Uniform",pos:"adjective",breakdown:"uni (one) + form (shape)",def:"Not varying in form or character; consistent",antonyms:["Varied","Different","Diverse"]}]},
+{root:"sens/sent",origin:"Latin",meaning:"feel, sense",words:[
+{word:"Sensitive",pos:"adjective",breakdown:"sens (feel) + itive (tending to)",def:"Quick to detect or respond to slight changes",antonyms:["Insensitive","Callous","Thick-skinned"]},
+{word:"Sensory",pos:"adjective",breakdown:"sens (feel) + ory (relating to)",def:"Relating to sensation or the physical senses",antonyms:["Motor","Cognitive","Mental"]},
+{word:"Sentiment",pos:"noun",breakdown:"sent (feel) + iment (state)",def:"A view or opinion based on feeling rather than reason",antonyms:["Fact","Reality","Logic"]},
+{word:"Consent",pos:"noun",breakdown:"con (together) + sent (feel)",def:"Permission for something to happen or agreement",antonyms:["Refusal","Dissent","Opposition"]},
+{word:"Consent",pos:"verb",breakdown:"con (together) + sent (feel)",def:"To give permission for something to happen",antonyms:["Refuse","Dissent","Object"]},
+{word:"Resent",pos:"verb",breakdown:"re (back) + sent (feel)",def:"To feel bitterness or indignation at",antonyms:["Appreciate","Welcome","Accept"]}]},
+{root:"seq/secu",origin:"Latin",meaning:"follow",words:[
+{word:"Sequence",pos:"noun",breakdown:"sequ (follow) + ence (state)",def:"A particular order in which related things follow each other",antonyms:["Disorder","Chaos","Randomness"]},
+{word:"Consequence",pos:"noun",breakdown:"con (with) + sequ (follow)",def:"A result or effect of an action or condition",antonyms:["Cause","Origin","Source"]},
+{word:"Pursue",pos:"verb",breakdown:"pur (forward) + sue (follow)",def:"To follow in order to catch or attack; to seek to attain",antonyms:["Flee","Avoid","Evade"]},
+{word:"Execute",pos:"verb",breakdown:"ex (out) + secu (follow)",def:"To carry out or put into effect; to put to death",antonyms:["Abandon","Spare","Pardon"]},
+{word:"Consecutive",pos:"adjective",breakdown:"con (together) + secu (follow)",def:"Following continuously without interruption",antonyms:["Random","Sporadic","Intermittent"]}]},
+{root:"tend/tens",origin:"Latin",meaning:"stretch, strain",words:[
+{word:"Extend",pos:"verb",breakdown:"ex (out) + tend (stretch)",def:"To cause to cover a larger area; to make longer",antonyms:["Shorten","Contract","Reduce"]},
+{word:"Pretend",pos:"verb",breakdown:"pre (before) + tend (stretch)",def:"To behave so as to make it appear that something is the case",antonyms:["Reveal","Admit","Confess"]},
+{word:"Intense",pos:"adjective",breakdown:"in (into) + tens (stretch)",def:"Of extreme force, degree, or strength",antonyms:["Mild","Weak","Gentle"]},
+{word:"Tension",pos:"noun",breakdown:"tens (stretch) + ion (act)",def:"The state of being stretched tight; mental or emotional strain",antonyms:["Relaxation","Ease","Calm"]},
+{word:"Contend",pos:"verb",breakdown:"con (with) + tend (stretch)",def:"To struggle to surmount a difficulty; to assert something",antonyms:["Yield","Surrender","Concede"]}]},
+{root:"terr",origin:"Latin",meaning:"earth, land",words:[
+{word:"Territory",pos:"noun",breakdown:"terr (land) + itory (place)",def:"An area of land under the jurisdiction of a state",antonyms:["Ocean","Sky","Space"]},
+{word:"Terrestrial",pos:"adjective",breakdown:"terr (earth) + estrial (relating to)",def:"Of, on, or relating to the earth",antonyms:["Celestial","Heavenly","Cosmic"]},
+{word:"Terrain",pos:"noun",breakdown:"terr (land) + ain (condition)",def:"A stretch of land, especially with regard to its features",antonyms:["Water","Air","Sea"]},
+{word:"Subterranean",pos:"adjective",breakdown:"sub (under) + terr (earth)",def:"Existing, occurring, or done under the earth's surface",antonyms:["Above-ground","Aerial","Surface"]},
+{word:"Mediterranean",pos:"adjective",breakdown:"medi (middle) + terr (land)",def:"Of or characteristic of the Mediterranean Sea or region",antonyms:["Oceanic","Maritime","Atlantic"]}]},
+{root:"ver",origin:"Latin",meaning:"truth",words:[
+{word:"Verify",pos:"verb",breakdown:"ver (truth) + ify (make)",def:"To make sure or demonstrate that something is true or accurate",antonyms:["Falsify","Disprove","Refute"]},
+{word:"Veracity",pos:"noun",breakdown:"ver (truth) + acity (quality)",def:"Conformity to facts; accuracy; truthfulness",antonyms:["Falsehood","Dishonesty","Mendacity"]},
+{word:"Verdict",pos:"noun",breakdown:"ver (truth) + dict (speak)",def:"A decision on a disputed issue in a civil or criminal case",antonyms:["Appeal","Question","Dispute"]},
+{word:"Verisimilitude",pos:"noun",breakdown:"veri (truth) + simil (similar)",def:"The appearance of being true or real",antonyms:["Falsehood","Implausibility","Unreality"]},
+{word:"Aver",pos:"verb",breakdown:"a (to) + ver (truth)",def:"To state or assert to be the case",antonyms:["Deny","Refute","Contradict"]}]},
+{root:"voc/vok",origin:"Latin",meaning:"call, voice",words:[
+{word:"Vocabulary",pos:"noun",breakdown:"voc (voice) + abulary (collection)",def:"The body of words used in a particular language",antonyms:["Silence","Muteness","Inarticulacy"]},
+{word:"Advocate",pos:"verb",breakdown:"ad (to) + voc (call) + ate",def:"To publicly recommend or support",antonyms:["Oppose","Condemn","Criticize"]},
+{word:"Advocate",pos:"noun",breakdown:"ad (to) + voc (call) + ate",def:"A person who publicly supports a cause or policy",antonyms:["Opponent","Critic","Adversary"]},
+{word:"Provoke",pos:"verb",breakdown:"pro (forth) + voke (call)",def:"To stimulate or give rise to a reaction or emotion",antonyms:["Pacify","Calm","Soothe"]},
+{word:"Revoke",pos:"verb",breakdown:"re (back) + voke (call)",def:"To officially cancel a decree, decision, or promise",antonyms:["Grant","Issue","Bestow"]},
+{word:"Invoke",pos:"verb",breakdown:"in (upon) + voke (call)",def:"To cite or appeal to as an authority for an action",antonyms:["Ignore","Dismiss","Disregard"]}]},
+{root:"mort",origin:"Latin",meaning:"death",words:[
+{word:"Mortal",pos:"adjective",breakdown:"mort (death) + al (relating to)",def:"Subject to death; causing or capable of causing death",antonyms:["Immortal","Eternal","Undying"]},
+{word:"Mortal",pos:"noun",breakdown:"mort (death) + al (relating to)",def:"A human being subject to death",antonyms:["Immortal","God","Deity"]},
+{word:"Immortal",pos:"adjective",breakdown:"im (not) + mort (death) + al",def:"Living forever; never to be forgotten",antonyms:["Mortal","Temporary","Transient"]},
+{word:"Mortify",pos:"verb",breakdown:"mort (death) + ify (make)",def:"To cause to feel embarrassed or ashamed",antonyms:["Praise","Comfort","Encourage"]},
+{word:"Mortician",pos:"noun",breakdown:"mort (death) + ician (specialist)",def:"An undertaker; one who prepares dead bodies for burial",antonyms:["Doctor","Healer","Physician"]},
+{word:"Moribund",pos:"adjective",breakdown:"mori (death) + bund (state)",def:"At the point of death; in terminal decline",antonyms:["Thriving","Flourishing","Vibrant"]}]},
+{root:"nov",origin:"Latin",meaning:"new",words:[
+{word:"Novel",pos:"adjective",breakdown:"nov (new) + el (diminutive)",def:"Interestingly new or unusual",antonyms:["Old","Traditional","Conventional"]},
+{word:"Novel",pos:"noun",breakdown:"nov (new) + el (diminutive)",def:"A fictitious prose narrative of book length",antonyms:["History","Biography","Fact"]},
+{word:"Innovate",pos:"verb",breakdown:"in (into) + nov (new) + ate",def:"To make changes in something; introduce new methods",antonyms:["Imitate","Copy","Replicate"]},
+{word:"Renovate",pos:"verb",breakdown:"re (again) + nov (new) + ate",def:"To restore to good condition; make new again",antonyms:["Deteriorate","Ruin","Destroy"]},
+{word:"Novice",pos:"noun",breakdown:"nov (new) + ice (person)",def:"A person new to or inexperienced in a field",antonyms:["Expert","Veteran","Professional"]},
+{word:"Novelty",pos:"noun",breakdown:"nov (new) + elty (quality)",def:"The quality of being new, original, or unusual",antonyms:["Familiarity","Routine","Convention"]}]}
+];
+function getPosClass(pos){
+return 'pos-'+pos.toLowerCase();
+}
+function render(filteredRoots){
+let h='',count=0;
+filteredRoots.forEach(r=>{
+h+=`<div class="root-card"><div class="root-header"><div><div class="root-main">${r.root}</div><div class="root-meaning">"${r.meaning}"</div></div><div class="root-origin"><strong>Origin:</strong> ${r.origin}</div></div><div class="root-body"><strong style="font-size:1.1em;color:#495057">Related Words:</strong><div class="word-family">`;
+r.words.forEach(w=>{
+count++;
+h+=`<div class="word-item"><div class="word-name">${w.word}<span class="pos-badge ${getPosClass(w.pos)}">${w.pos}</span></div><div class="word-breakdown">${w.breakdown}</div><div class="word-def"><strong>Meaning:</strong> ${w.def}</div><div class="word-antonym"><strong>Antonyms:</strong> ${w.antonyms.map(a=>'<span class="ant-item">'+a+'</span>').join(' ')}</div></div>`;
+});
+h+=`</div></div></div>`;
+});
+document.getElementById('content').innerHTML=h||'<div class="no-results">No results found</div>';
+document.getElementById('visibleWords').textContent=count;
+}
+function filterWords(){
+let s=document.getElementById('search').value.toLowerCase();
+let pf=document.getElementById('posFilter').value;
+let filtered=roots.map(r=>{
+let words=r.words.filter(w=>{
+let matchSearch=!s||(w.word.toLowerCase().includes(s)||w.def.toLowerCase().includes(s)||w.antonyms.some(a=>a.toLowerCase().includes(s))||r.root.toLowerCase().includes(s)||r.meaning.toLowerCase().includes(s));
+let matchPos=pf==='all'||w.pos===pf;
+return matchSearch&&matchPos;
+});
+return words.length>0?{...r,words}:null;
+}).filter(r=>r!==null);
+render(filtered);
+}
+render(roots);
+</script>
+</body>
+</html>
